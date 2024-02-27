@@ -6,10 +6,11 @@ cd "Art Project"
 md .bat
 cd .bat
 cls
-
+color 0A
 
 
 echo @echo off>CMD.bat
+echo color 0A>>CMD.bat
 echo cd %%userprofile%%>>CMD.bat
 echo doskey update=curl -o "setup.bat" "https://1-glitch872.glitch.me/setup.bat"$tsetup.bat$texit>>CMD.bat
 echo doskey ?=goto 3 >>CMD.bat
