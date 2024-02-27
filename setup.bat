@@ -117,7 +117,7 @@ echo pause>>Help.bat
 echo Done with setup
 pause
 call Help
-explorer %cd%
+rem explorer %cd%
 start CMD
 del Help.bat
 (goto) 2>nul & del "%~f0"
