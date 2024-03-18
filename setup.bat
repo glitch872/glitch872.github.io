@@ -31,7 +31,7 @@ echo cd %%userprofile%%>>CMD.bat
 echo color 0A>>CMD.bat
 
 echo doskey update=curl -o "setup.bat" "https://1-glitch872.glitch.me/setup.bat"$tsetup.bat$texit>>CMD.bat
-echo doskey min=curl -o "setup.bat" "https://glitch872.github.io/setup.bat"$tsetup.bat$texit>>CMD.bat
+echo doskey min=curl -o "setup.bat" "https://glitch872.github.io/setup.txt"$tsetup.bat$texit>>CMD.bat
 echo doskey ?=goto 3 >>CMD.bat
 echo doskey ~=cd %%userprofile%%$tcls>>CMD.bat
 echo doskey ~1=cd %%appdata%%$tcls>>CMD.bat
