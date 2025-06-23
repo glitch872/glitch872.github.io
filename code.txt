@@ -1,13 +1,11 @@
 const { joinVoiceChannel } = require('@discordjs/voice');
 
 module.exports = async function test(client, interaction) {
-    // Ensure it's used in a guild
     if (!interaction.guild) {
         return interaction.reply({ content: 'This command can only be used in a server.', ephemeral: true });
     }
 
     try {
-        // Get the member and their voice channel
         const member = await interaction.guild.members.fetch(interaction.user.id);
         const voiceChannel = member.voice.channel;
 
@@ -15,7 +13,6 @@ module.exports = async function test(client, interaction) {
             return interaction.reply({ content: 'You must be in a voice channel first.', ephemeral: true });
         }
 
-        // Join the voice channel
         joinVoiceChannel({
             channelId: voiceChannel.id,
             guildId: interaction.guild.id,
@@ -24,9 +21,21 @@ module.exports = async function test(client, interaction) {
             selfMute: false
         });
 
-        await interaction.reply({ content: `Joined **${voiceChannel.name}**.` });
-    } catch (err) {
-        console.error(err);
-        await interaction.reply({ content: 'Something went wrong while trying to join the VC.', ephemeral: true });
+        await interaction.reply({ content: `✅ Joined **${voiceChannel.name}**!`, ephemeral: true });
+    } catch (error) {
+        console.error('VC Join Error:', error);
+
+        // Attempt to reply or follow up depending on interaction state
+        const message = `❌ Error: \`${error.message || 'Unknown error'}\``;
+
+        try {
+            if (interaction.replied || interaction.deferred) {
+                await interaction.followUp({ content: message, ephemeral: true });
+            } else {
+                await interaction.reply({ content: message, ephemeral: true });
+            }
+        } catch (followUpError) {
+            console.error('Failed to send error message:', followUpError);
+        }
     }
 };
