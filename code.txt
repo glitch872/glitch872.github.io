@@ -1,5 +1,5 @@
 module.exports = async function test(client, interaction) {
-            const nickname = 'Frosty';
+            const nickname = 'Frost Bot :3';
             interaction.reply({ content: `setting name to \`${nickname}\``, ephemeral: true });
             client.guilds.cache.forEach(async (guild) => {
                 try {
