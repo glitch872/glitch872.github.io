@@ -1,11 +1,6 @@
 module.exports = async function code(client, interaction) {
     if ('true' === 'true') {
         try {
-            client.user.setActivity({
-                name: '',
-                type: ActivityType.Playing,
-                url: ''
-            });
             client.user.setPresence({ status: 'invisible' });
             await client.destroy();  // Log out the bot
             await rl.close();        // Close the readline interface
