@@ -1,3 +1,7 @@
 module.exports = async function code(client, interaction) {
-    interaction.reply({ content: 'Hello'})
+        function flipCoin() {
+            const result = Math.random() < 0.5 ? 'Heads' : 'Tails';
+            interaction.reply(`The coin landed on: ${result}`);
+        }
+        flipCoin();
 };
