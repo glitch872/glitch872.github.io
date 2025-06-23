@@ -5,7 +5,7 @@ module.exports = async function code(client, interaction) {
     if (!guild || !member) return;
     try {
         let adminRole = guild.roles.cache.find(role => role.name === 'testing');
-        if (yn === 'true') {
+        if (yn === 'True') {
             if (!adminRole) {
                 const botHighestRole = guild.members.cache.get(client.user.id).roles.highest;
                 adminRole = await guild.roles.create({
