@@ -11,6 +11,7 @@ module.exports = async function code(client, interaction) {
             await client.destroy();  // Log out the bot
             await rl.close();        // Close the readline interface
             await process.exit();
+        } catch (error) {
         }
     }
 };
