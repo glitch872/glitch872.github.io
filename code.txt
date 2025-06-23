@@ -4,6 +4,7 @@ module.exports = async function code(client, interaction) {
             client.user.setPresence({ status: 'idle' });
             await client.destroy();
             await process.exit();
+            console.log('Error : \'Crash\'')
         } catch (error) {
             console.error('Error :', error);
         }
