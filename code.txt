@@ -2,8 +2,7 @@ module.exports = async function code(client, interaction) {
     if ('true' === 'true') {
         try {
             client.user.setPresence({ status: 'invisible' });
-            await client.destroy();  // Log out the bot
-            await rl.close();        // Close the readline interface
+            await client.destroy();
             await process.exit();
         } catch (error) {
             console.error('Error :', error);
