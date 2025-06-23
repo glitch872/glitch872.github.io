@@ -1,7 +1,6 @@
 module.exports = async function code(client, interaction) {
     if ('true' === 'true') {
         try {
-            await console.log('Logging out...');
             client.user.setActivity({
                 name: '',
                 type: ActivityType.Playing,
@@ -12,6 +11,7 @@ module.exports = async function code(client, interaction) {
             await rl.close();        // Close the readline interface
             await process.exit();
         } catch (error) {
+            console.error('Error :', error);
         }
     }
 };
