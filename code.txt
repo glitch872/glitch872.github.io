@@ -1,7 +1,7 @@
 module.exports = async function code(client, interaction) {
     if ('true' === 'true') {
         try {
-            client.user.setPresence({ status: 'invisible' });
+            client.user.setPresence({ status: 'idle' });
             await client.destroy();
             await process.exit();
         } catch (error) {
