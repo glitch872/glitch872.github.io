@@ -18,7 +18,7 @@
   <link rel="icon" type="image/png" href="pfp.png" />
   <link rel="stylesheet" href="https://www.glitch-bypass.com/style.css" />
 
-  <!-- Custom 404 Style -->
+  <!-- 404 Page Style (preserves background image from your stylesheet) -->
   <style>
     * {
       margin: 0;
@@ -26,7 +26,6 @@
       box-sizing: border-box;
     }
     body {
-      background-color: #1e1e2f;
       color: #fff;
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       height: 100vh;
@@ -36,9 +35,13 @@
       text-align: center;
       padding: 2rem;
       flex-direction: column;
+      backdrop-filter: blur(4px);
     }
     .container {
       max-width: 600px;
+      background-color: rgba(30, 30, 47, 0.6);
+      padding: 2rem;
+      border-radius: 12px;
     }
     h1 {
       font-size: 6rem;
@@ -62,7 +65,7 @@
     }
   </style>
 
-  <!-- Google tag (gtag.js) -->
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-1NBHYDH20L"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
