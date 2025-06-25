@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>💥 FINAL BOSS: UGLY WEBSITE 💥</title>
+    <style>
+        body {
+            background: url('https://media.giphy.com/media/l0HUpt2s9Pclgt9Vm/giphy.gif') repeat;
+            font-family: "Comic Sans MS", cursive, sans-serif;
+            margin: 0;
+            overflow: auto; /* FIXED HERE */
+            text-align: center;
+            cursor: url('https://www.rw-designer.com/cursor-extern.php?id=85503'), auto;
+        }
+        h1 {
+            font-size: 80px;
+            padding: 40px;
+            background: linear-gradient(to right, red, orange, yellow, green, cyan, blue, violet);
+            color: transparent;
+            -webkit-background-clip: text;
+            animation: rainbow 3s infinite alternate;
+        }
+        @keyframes rainbow {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+        .blink {
+            animation: blinker 0.3s linear infinite;
+        }
+        @keyframes blinker {
+            50% { opacity: 0; }
+        }
+        .spinny {
+            display: inline-block;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        p, a, td {
+            font-size: 28px;
+            background-color: cyan;
+            border: 5px dashed red;
+            padding: 15px;
+            margin: 10px;
+            color: purple;
+        }
+        a {
+            text-decoration: underline double yellow;
+            background-color: black;
+            color: lime;
+        }
+        marquee {
+            font-size: 32px;
+            font-weight: bold;
+            background: hotpink;
+            color: black;
+            padding: 10px;
+            margin: 10px;
+        }
+        table {
+            border: 5px ridge red;
+            background-color: yellow;
+            margin: auto;
+        }
+        iframe {
+            width: 300px;
+            height: 200px;
+            border: 10px groove fuchsia;
+            margin: 40px;
+        }
+    </style>
+</head>
+<body onload="launchMadness()">
+
+<script>
+    function launchMadness() {
+        alert("🔥🔥 Welcome to THE FINAL BOSS of UGLY WEBSITES 🔥🔥");
+    }
+
+    document.addEventListener("mousemove", function(e) {
+        const sparkle = document.createElement("div");
+        sparkle.textContent = "✨";
+        sparkle.style.position = "absolute";
+        sparkle.style.left = e.pageX + "px";
+        sparkle.style.top = e.pageY + "px";
+        sparkle.style.fontSize = "20px";
+        sparkle.style.pointerEvents = "none";
+        sparkle.style.zIndex = "9999";
+        sparkle.style.animation = "fadeOut 1s forwards";
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 1000);
+    });
+</script>
+<style>
+    @keyframes fadeOut {
+        0% { opacity: 1; transform: translateY(0); }
+        100% { opacity: 0; transform: translateY(-20px); }
+    }
+</style>
+
+<audio autoplay loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" type="audio/mpeg">
+</audio>
+
+<marquee behavior="alternate" scrollamount="20">💥💥 WELCOME TO MADNESS 💥💥</marquee>
+<marquee behavior="slide" direction="right">⚠️ WARNING: DESIGN CRIME IN PROGRESS ⚠️</marquee>
+
+<center>
+    <h1 class="blink spinny">🌈 FINAL BOSS WEBSITE 🌈</h1>
+</center>
+
+<p class="blink spinny">This website includes every bad design idea known to humanity. Proceed with caution.</p>
+<a class="blink spinny" href="#">💀 CLICK HERE FOR INSTANT REGRET 💀</a>
+
+<marquee behavior="alternate" direction="up" scrollamount="10" height="200px">
+    <table>
+        <tr><td>💣</td><td>🔥</td><td>🎯</td></tr>
+        <tr><td>🤡</td><td>💾</td><td>👾</td></tr>
+    </table>
+</marquee>
+
+<!-- Ugly nested iframes -->
+<iframe src="https://pointerpointer.com/" title="pointer"></iframe>
+<iframe src="https://theuselessweb.com/" title="useless web"></iframe>
+
+<!-- Clippy assistant -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clippy.js/1.0.0/clippy.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/clippy.js/1.0.0/clippy.min.css">
+<script>
+    clippy.load('Clippy', agent => {
+        agent.show();
+        agent.speak("It looks like you're trying to destroy the internet. Need help?");
+    });
+</script>
+
+<!-- Final message -->
+<center>
+    <font size="7" color="lime" face="Papyrus"><b>🔥 THANK YOU FOR BURNING YOUR EYEBALLS 🔥</b></font>
+</center>
+
+</body>
+</html>
