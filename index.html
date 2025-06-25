@@ -1,70 +1,186 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>glitch872's Website</title>
+
   <meta property="og:site_name" content="glitch872" />
   <meta property="og:url" content="https://www.glitch-bypass.com" />
   <meta property="og:title" content="glitch872's website" />
   <meta property="og:description" content="The webpage owned by glitch872" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://www.glitch-bypass.com/protogen.gif" />
-  <meta name="twitter:card" content="summary_large_image">
-  <head>
-    <link rel="icon" type="png" href="pfp.png" />
-    <link rel="stylesheet" href="/style.css" />
-    <title>glitch872's website</title>
-  </head>
-  <!-- Google tag (gtag.js) -->
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" type="image/png" href="pfp.png" />
+  <link rel="stylesheet" href="/style.css" />
+
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: transparent;
+      color: #f0f0f0;
+      min-height: 100vh;
+      padding: 2rem 0;
+      backdrop-filter: blur(6px);
+      overflow-x: hidden;
+    }
+
+    .layout {
+      display: flex;
+      justify-content: flex-start;
+      max-width: 1400px;
+      margin: 0 auto;
+      gap: 3rem;
+      padding-left: 2rem;
+    }
+
+    /* Main content flush left */
+    .main-content {
+      flex: 1 1 700px;
+      background-color: rgba(30, 30, 47, 0.6);
+      padding: 2rem 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      min-width: 350px;
+    }
+
+    /* Sidebar on right with contact info */
+    .sidebar {
+      flex: 0 0 370px;
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      min-width: 350px;
+    }
+
+    .contact-box {
+      background-color: rgba(30, 30, 47, 0.6);
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      width: 100%;
+      font-size: 0.95rem;
+      color: #ddd;
+      text-align: center;
+    }
+
+    .contact-box p {
+      margin: 0.5rem 0;
+    }
+
+    h1 {
+      font-size: 2.3rem;
+      color: #89dceb;
+      margin-bottom: 1.2rem;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    a {
+      color: #ff6b6b;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    a:hover {
+      color: #ff4b4b;
+      text-decoration: underline;
+    }
+
+    /* Fixed Discord embed bottom right */
+    .discord-fixed {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 320px;
+      height: 480px;
+      border-radius: 8px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+      z-index: 9999;
+      background-color: rgba(30, 30, 47, 0.85);
+      overflow: hidden;
+    }
+
+    .discord-fixed iframe {
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
+      border: none;
+    }
+
+    @media (max-width: 900px) {
+      .layout {
+        flex-direction: column;
+        padding-left: 1rem;
+      }
+      .sidebar, .main-content {
+        min-width: auto;
+        width: 100%;
+      }
+      .sidebar {
+        margin-top: 2rem;
+        align-items: flex-start;
+      }
+      .discord-fixed {
+        width: 90vw;
+        height: 300px;
+        bottom: 10px;
+        right: 5vw;
+      }
+    }
+  </style>
+
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-1NBHYDH20L"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-1NBHYDH20L');
   </script>
-  <body>
-    <h4>Welcome to the website of glitch872</h4>
-    <p>
-      Click
-      <a href="index2">here</a>
-      to open image hyperlink
-      <br />
-      Click
-      <a href="/Files">here</a>
-      to open files folder
-      <br>
-      Click
-      <a href="weblinks">here</a>
-      to see a list of all websites I have made
-      <br /><br />
-      Download my Custom
-      <a href="terminal">Terminal</a>
-      <br /><br />
-      Discord User : glitchkiller872
-      <br />
-      User w/Tag: glitchkiller872 yt#1256
-      <br />
-      Github :
-      <a href="https://github.com/glitch872">glitch872/github</a> 
-      <br />
-      Youtube : 
-      <a href="youtube">@glitchkiller872</a> <br /><br />
-      <!--Do Not
-      <a href="e.html">Click</a>
-      Me!!! (Browser crasher, WILL spam links)
-      <br>-->
-      Editable page : Click
-      <a href="https://www.glitch-bypass.com/editable">Here</a>
-      <br /><br />
-      Go back to your website (localhost)
-      <br />
-      (If you don't have localhost set up for a website
-      <br />
-      this will just pull up an error)
-      <br />
-      Click
-      <a href="http://localhost">Here!</a>
-    </p>
-    <div class="discord-widget-container">
-      <iframe src="https://discord.com/widget?id=1037930845849268334&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+</head>
+
+<body>
+  <div class="layout">
+    <div class="main-content">
+      <h1>Welcome to glitch872's Website</h1>
+
+      <p>• <a href="index2">Open image hyperlink</a></p>
+      <p>• <a href="/Files">Access the files folder</a></p>
+      <p>• <a href="weblinks">View all websites I've made</a></p>
+      <p>• Download my custom <a href="terminal">CMD Terminal</a></p>
+
+      <p>Editable Page: <a href="https://www.glitch-bypass.com/editable">Click Here</a></p>
+
+      <p>
+        Localhost link (only works if set up):<br />
+        <a href="http://localhost">http://localhost</a>
+      </p>
     </div>
-  </body>
+
+    <div class="sidebar">
+      <div class="contact-box">
+        <p><strong>Discord Username:</strong> glitchkiller872</p>
+        <p><strong>Tag:</strong> glitchkiller872 yt#1256</p>
+        <p><strong>GitHub:</strong> <a href="https://github.com/glitch872">glitch872/github</a></p>
+        <p><strong>YouTube:</strong> <a href="youtube">@glitchkiller872</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="discord-fixed">
+    <iframe src="https://discord.com/widget?id=1037930845849268334&theme=dark" allowtransparency="true" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+  </div>
+</body>
 </html>

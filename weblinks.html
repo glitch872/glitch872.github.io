@@ -1,43 +1,122 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Weblinks | glitch872</title>
+
   <meta property="og:site_name" content="glitch872" />
   <meta property="og:url" content="https://www.glitch-bypass.com" />
   <meta property="og:title" content="glitch872's website" />
   <meta property="og:description" content="The webpage owned by glitch872" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://www.glitch-bypass.com/protogen.gif" />
-  <meta name="twitter:card" content="summary_large_image">
-  <head>
-    <link rel="icon" type="png" href="icon.png" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Weblinks</title>
-  </head>
-  <!-- Google tag (gtag.js) -->
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" type="image/png" href="icon.png" />
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: transparent;
+      color: #f0f0f0;
+      min-height: 100vh;
+      padding: 2rem 0;
+      backdrop-filter: blur(6px);
+      overflow-x: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      position: relative;
+    }
+
+    .container {
+      max-width: 900px;
+      background-color: rgba(30, 30, 47, 0.6);
+      padding: 2rem 3rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      line-height: 1.6;
+    }
+
+    h1, h4 {
+      color: #89dceb;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    p {
+      font-size: 1.05rem;
+      margin-bottom: 1rem;
+      color: #ddd;
+    }
+
+    a {
+      color: #ff6b6b;
+      text-decoration: none;
+      transition: color 0.2s ease;
+      word-break: break-word;
+    }
+
+    a:hover {
+      color: #ff4b4b;
+      text-decoration: underline;
+    }
+
+    /* Back button styling */
+    .back-link {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 0.9rem;
+      color: #fff;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 0.4rem 0.8rem;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background-color 0.2s ease, color 0.2s ease;
+      z-index: 1000;
+    }
+    .back-link:hover {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    @media (max-width: 900px) {
+      .container {
+        width: 90vw;
+        padding: 1.5rem 1.5rem;
+      }
+    }
+  </style>
+
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-1NBHYDH20L"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-1NBHYDH20L');
   </script>
-  <body>
+</head>
+
+<body>
+  <a class="back-link" href="https://www.glitch-bypass.com">← Back to Main Site</a>
+
+  <main class="container">
     <h4>Weblinks</h4>
+    <p>This is a list of all websites I have made, both new and old.</p>
+
     <p>
-      This is a list of all websites I have made, both new and old
-      <br /><br />
-      Click <a href="https://www.glitch-bypass.com">here</a> to go back to the
-      main page <br /><br />
-      <a href="https://glitch872.github.io">glitch872.github.io</a> (Now used
-      for holding files to transfer here)
-      <br />
-      <a href="https://glitch8721.github.io">glitch8721.github.io</a> (A one
-      time troll I did, quite childish)
-      <br />
-      <a href="https://loading-screen.github.io">loading-screen.github.io</a> (A
-      fake loading screen)
-      <br />
-      <a href="https://www.glitch-bypass.com">1-glitch872.glitch.me</a> (This
-      website)
+      <a href="https://glitch872.github.io">glitch872.github.io</a> (Now used for holding files to transfer here)<br />
+      <a href="https://glitch8721.github.io">glitch8721.github.io</a> (A one time troll I did, quite childish)<br />
+      <a href="https://loading-screen.github.io">loading-screen.github.io</a> (A fake loading screen)<br />
+      <a href="https://www.glitch-bypass.com">glitch-bypass.com</a> (This website)
     </p>
-  </body>
+  </main>
+</body>
 </html>
