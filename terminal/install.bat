@@ -19,7 +19,7 @@ if /i "%currentDir%"=="%desktopDir%" (
 ) else (
     echo ===================================================
     echo This installer must be run from your Desktop folder.
-    echo Actual Desktop path: %desktopDir%
+    echo Desktop path: %desktopDir%
     echo Current script path: %currentDir%
     echo Please move this file to your Desktop and try again.
     echo ===================================================
