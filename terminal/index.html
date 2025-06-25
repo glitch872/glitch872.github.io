@@ -34,6 +34,7 @@
       text-align: center;
       padding: 2rem;
       backdrop-filter: blur(4px);
+      position: relative;
     }
     .container {
       max-width: 600px;
@@ -69,6 +70,22 @@
       color: #ccc;
       margin-top: 1.5rem;
     }
+
+    .back-link {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 0.9rem;
+      color: #fff;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 0.4rem 0.8rem;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+    .back-link:hover {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
   </style>
 
   <!-- Google Analytics -->
@@ -82,13 +99,14 @@
 </head>
 
 <body>
+  <a class="back-link" href="https://www.glitch-bypass.com">&larr; Back to Main Site</a>
+
   <div class="container">
-    <h1>Download My Terminal</h1>
+    <h1>Custom CMD Terminal</h1>
     <p>This is my custom-made terminal.<br>
     Click below to install it with the latest version.</p>
 
     <a class="download-btn" href="/terminal/install.bat" download>Download Installer</a>
-    <a class="download-btn" href="https://www.glitch-bypass.com">Back to Main Site</a>
 
     <p class="note">Please ensure to only run the installer when it is on your desktop</p>
   </div>
