@@ -110,43 +110,53 @@
     <iframe src="https://namemc.com/server/mc.hypixel.net/embed"></iframe>
 
     <!-- Live status will appear here -->
-    <div id="hardlife-status" class="server-card">
-      <h3>HardLife.mc.gg status</h3>
+    <div class="server-card" data-server="hardlife.mc.gg">
+      <h3>hardlife.mc.gg status</h3>
+      <p>Loading status…</p>
+    </div>
+
+    <div class="server-card" data-server="mc.hypixel.net">
+      <h3>play.example.net status</h3>
       <p>Loading status…</p>
     </div>
   </div>
 
   <!-- Live-status script -->
   <script>
-    fetch('https://api.mcsrvstat.us/2/hardlife.mc.gg')
-      .then(response => response.json())
-      .then(data => {
-        const card = document.getElementById('hardlife-status');
-
-        if (!data || !data.online) {
-          card.innerHTML = `
-            <h3>HardLife.mc.gg status</h3>
-            <p style="color: #ff6969;">Server is offline</p>`;
-          return;
-        }
-
-        const playerLine = data.players.online === 0
-          ? 'No one online'
-          : `${data.players.online} / ${data.players.max} players`;
-
+  // Helper that fills a single card
+    function updateCard(card, data, server) {
+      if (!data || !data.online) {
         card.innerHTML = `
-          <h3>HardLife.mc.gg status</h3>
-          <p><strong>Status:</strong> <span style="color:#7CFC00;">Online</span></p>
-          <p><strong>Players:</strong> ${playerLine}</p>
-          <p><strong>Version:</strong> ${data.version ?? 'N/A'}</p>
-          <p><strong>MOTD:</strong> ${data.motd?.clean?.join('<br>') ?? '—'}</p>
-        `;
-      })
-      .catch(() => {
-        document.getElementById('hardlife-status').innerHTML = `
-          <h3>HardLife.mc.gg status</h3>
-          <p style="color: #FFA500;">Could not retrieve server info.</p>`;
-      });
+          <h3>${server} status</h3>
+          <p style="color:#ff6969;">Server is offline</p>`;
+        return;
+      }
+
+      const playerLine = data.players.online === 0
+        ? 'No one online'
+        : `${data.players.online} / ${data.players.max} players`;
+
+      card.innerHTML = `
+        <h3>${server} status</h3>
+        <p><strong>Status:</strong> <span style="color:#7CFC00;">Online</span></p>
+        <p><strong>Players:</strong> ${playerLine}</p>
+        <p><strong>Version:</strong> ${data.version ?? 'N/A'}</p>
+        <p><strong>MOTD:</strong> ${data.motd?.clean?.join('<br>') ?? '—'}</p>`;
+    }
+
+    // Grab every card on the page and fetch its server info
+    document.querySelectorAll('.server-card').forEach(card => {
+      const server = card.dataset.server;          // ← gets value from data-attribute
+      fetch(`https://api.mcsrvstat.us/2/${server}`)
+        .then(r => r.json())
+        .then(d => updateCard(card, d, server))
+        .catch(() => {
+          card.innerHTML = `
+            <h3>${server} status</h3>
+            <p style="color:#FFA500;">Could not retrieve server info.</p>`;
+        });
+    });
   </script>
+
 </body>
 </html>
