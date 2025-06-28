@@ -18,7 +18,9 @@
 
   <style>
     * {
-      margin: 0; padding: 0; box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
     body {
@@ -85,10 +87,20 @@
       background-color: rgba(0, 0, 0, 0.7);
     }
 
+    /* Mobile styles */
     @media (max-width: 900px) {
+      .back-link {
+        position: relative;  /* Move from absolute to relative */
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 1rem;  /* Move button down from the top */
+        margin-bottom: 2rem; /* Space below the button */
+        top: unset; /* No absolute positioning */
+        left: unset; /* No absolute positioning */
+      }
       .container {
-        width: 90vw;
-        padding: 1.5rem 1.5rem;
+        width: 90vw; /* Allow container to be a bit smaller on mobile */
+        padding: 1.5rem; /* Padding for smaller screen */
       }
     }
   </style>
