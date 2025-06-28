@@ -56,6 +56,24 @@
       margin: auto;
     }
 
+    /* --- HardLife status card --- */
+    .server-card {
+      margin: 1.5rem auto 0;
+      padding: 1rem 1.25rem;
+      background-color: rgba(0, 0, 0, 0.45);
+      border-radius: 8px;
+      width: 100%;
+      max-width: 728px;
+      line-height: 1.45;
+    }
+    .server-card h3 {
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+    .server-card p {
+      font-size: 0.95rem;
+    }
+
     .back-link {
       position: absolute;
       top: 20px;
@@ -69,7 +87,6 @@
       transition: background-color 0.2s ease, color 0.2s ease;
       z-index: 1000;
     }
-
     .back-link:hover {
       background-color: rgba(0, 0, 0, 0.7);
     }
@@ -89,8 +106,47 @@
   <a class="back-link" href="https://www.glitch-bypass.com">← Back to Main Site</a>
 
   <div class="container">
+    <!-- Example ad / banner iframe (unchanged) -->
     <iframe src="https://namemc.com/server/mc.hypixel.net/embed"></iframe>
-    <iframe src="https://api.mcsrvstat.us/server/HardLife.mc.gg"></iframe>
+
+    <!-- Live status will appear here -->
+    <div id="hardlife-status" class="server-card">
+      <h3>HardLife.mc.gg status</h3>
+      <p>Loading status…</p>
+    </div>
   </div>
+
+  <!-- Live-status script -->
+  <script>
+    fetch('https://api.mcsrvstat.us/2/hardlife.mc.gg')
+      .then(response => response.json())
+      .then(data => {
+        const card = document.getElementById('hardlife-status');
+
+        if (!data || !data.online) {
+          card.innerHTML = `
+            <h3>HardLife.mc.gg status</h3>
+            <p style="color: #ff6969;">Server is offline</p>`;
+          return;
+        }
+
+        const playerLine = data.players.online === 0
+          ? 'No one online'
+          : `${data.players.online} / ${data.players.max} players`;
+
+        card.innerHTML = `
+          <h3>HardLife.mc.gg status</h3>
+          <p><strong>Status:</strong> <span style="color:#7CFC00;">Online</span></p>
+          <p><strong>Players:</strong> ${playerLine}</p>
+          <p><strong>Version:</strong> ${data.version ?? 'N/A'}</p>
+          <p><strong>MOTD:</strong> ${data.motd?.clean?.join('<br>') ?? '—'}</p>
+        `;
+      })
+      .catch(() => {
+        document.getElementById('hardlife-status').innerHTML = `
+          <h3>HardLife.mc.gg status</h3>
+          <p style="color: #FFA500;">Could not retrieve server info.</p>`;
+      });
+  </script>
 </body>
 </html>
