@@ -48,6 +48,7 @@
       border-radius: 12px;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
       min-width: 350px;
+      height: fit-content;
     }
 
     /* Sidebar on right with contact info */
@@ -100,16 +101,21 @@
     }
 
     /* Discord embed under main content */
+    .discord-wrapper {
+      display: flex;
+      justify-content: center; /* Centers the discord embed */
+      width: 100%;
+    }
+
     .discord-fixed {
       width: 100%;
       max-width: 320px;
       height: 480px;
-      margin-top: -12rem; /* Adds space between content and embed */
+      margin-top: 1.5rem; /* Adjust the space between the contact-box and embed */
       border-radius: 8px;
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
       background-color: rgba(30, 30, 47, 0.85);
       overflow: hidden;
-      margin-left: 81.25rem;
     }
 
     .discord-fixed iframe {
@@ -180,13 +186,14 @@
         <p><strong>Tag:</strong> glitchkiller872 yt#1256</p>
         <p><strong>GitHub:</strong> <a href="https://github.com/glitch872">glitch872/github</a></p>
         <p><strong>YouTube:</strong> <a href="youtube">@glitchkiller872</a></p>
+    </div>
+
+    <!-- New Wrapper for the contact box and discord embed -->
+    <div class="discord-wrapper">
+      <div class="discord-fixed">
+        <iframe src="https://discord.com/widget?id=1037930845849268334&theme=dark" allowtransparency="true" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
       </div>
     </div>
-  </div>
-
-  <!-- Discord widget placed below main content -->
-  <div class="discord-fixed">
-    <iframe src="https://discord.com/widget?id=1037930845849268334&theme=dark" allowtransparency="true" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
   </div>
 </body>
 </html>
