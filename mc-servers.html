@@ -88,17 +88,15 @@
     .back-link:hover {
       background-color: rgba(0, 0, 0, 0.7);
     }
-
     @media (max-width: 900px) {
-      .layout {
-        flex-direction: column;
-        padding-left: 1rem;
-      }
       .back-link {
+        position: relative;  /* Change from absolute to relative */
         margin-left: auto;
         margin-right: auto;
-        margin-top: -9rem;
+        margin-top: 1rem;  /* Adjust as needed */
         margin-bottom: 1rem;
+        top: unset; /* Remove absolute positioning */
+        left: unset; /* Remove left positioning */
       }
     }
   </style>
