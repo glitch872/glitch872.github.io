@@ -76,12 +76,6 @@
       margin: 0.5rem 0;
     }
 
-    .discord-wrapper {
-      display: flex;
-      justify-content: center;
-      width: 100%;
-    }
-
     h1 {
       font-size: 2.3rem;
       color: #89dceb;
@@ -104,18 +98,19 @@
       color: #ff4b4b;
       text-decoration: underline;
     }
-    
+
+    /* Discord embed under main content */
     .discord-fixed {
       width: 100%;
       max-width: 320px;
       height: 480px;
-      margin-top: 1.5rem; /* Adjust the space between the contact-box and embed */
+      margin-top: -12rem; /* Adds space between content and embed */
       border-radius: 8px;
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
       background-color: rgba(30, 30, 47, 0.85);
       overflow: hidden;
-  }
-
+      margin-left: 81.25rem;
+    }
 
     .discord-fixed iframe {
       width: 100%;
@@ -190,10 +185,8 @@
   </div>
 
   <!-- Discord widget placed below main content -->
-  <div class="discord-wrapper">
-    <div class="discord-fixed">
-      <iframe src="https://discord.com/widget?id=1037930845849268334&theme=dark" allowtransparency="true" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
-    </div>
+  <div class="discord-fixed">
+    <iframe src="https://discord.com/widget?id=1037930845849268334&theme=dark" allowtransparency="true" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
   </div>
 </body>
 </html>
