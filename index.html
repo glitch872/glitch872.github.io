@@ -110,6 +110,7 @@
       z-index: 9999;
       background-color: rgba(30, 30, 47, 0.85);
       overflow: hidden;
+      display: none; /* Initially hidden */
     }
 
     .discord-fixed iframe {
@@ -119,24 +120,34 @@
       border: none;
     }
 
+    /* Toggle Button on mobile */
+    .toggle-button {
+      display: none; /* Hidden by default */
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #ff6b6b;
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      z-index: 9999;
+    }
+
+    .toggle-button:hover {
+      background-color: #ff4b4b;
+    }
+
     @media (max-width: 900px) {
-      .layout {
-        flex-direction: column;
-        padding-left: 1rem;
+      /* Show the button on mobile */
+      .toggle-button {
+        display: block;
       }
-      .sidebar, .main-content {
-        min-width: auto;
-        width: 100%;
-      }
-      .sidebar {
-        margin-top: 2rem;
-        align-items: flex-start;
-      }
-      .discord-fixed {
-        width: 90vw;
-        height: 300px;
-        bottom: 10px;
-        right: 5vw;
+      .discord-fixed.open {
+        display: block;
       }
     }
   </style>
@@ -179,8 +190,33 @@
     </div>
   </div>
 
+  <!-- Button to toggle embed visibility -->
+  <button id="toggle-embed" class="toggle-button">Open Discord</button>
+
+  <!-- Discord Embed -->
   <div class="discord-fixed">
     <iframe src="https://discord.com/widget?id=1037930845849268334&theme=dark" allowtransparency="true" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
   </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const toggleButton = document.getElementById("toggle-embed");
+      const discordEmbed = document.querySelector(".discord-fixed");
+
+      // Check if the user is on mobile
+      if (window.innerWidth <= 900) {
+        toggleButton.style.display = "block"; // Show the button on mobile
+      }
+
+      toggleButton.addEventListener("click", function () {
+        discordEmbed.classList.toggle("open"); // Toggle the visibility of the embed
+        if (discordEmbed.classList.contains("open")) {
+          toggleButton.textContent = "Close Discord"; // Change button text
+        } else {
+          toggleButton.textContent = "Open Discord"; // Reset button text
+        }
+      });
+    });
+  </script>
 </body>
 </html>
