@@ -98,16 +98,14 @@
       text-decoration: underline;
     }
 
-    /* Fixed Discord embed bottom right */
+    /* Discord embed under main content */
     .discord-fixed {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 320px;
+      width: 100%;
+      max-width: 320px;
       height: 480px;
+      margin-top: 2rem; /* Adds space between content and embed */
       border-radius: 8px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.5);
-      z-index: 9999;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
       background-color: rgba(30, 30, 47, 0.85);
       overflow: hidden;
     }
@@ -135,8 +133,7 @@
       .discord-fixed {
         width: 90vw;
         height: 300px;
-        bottom: 10px;
-        right: 5vw;
+        margin-top: 1.5rem;
       }
     }
   </style>
@@ -179,6 +176,7 @@
     </div>
   </div>
 
+  <!-- Discord widget placed below main content -->
   <div class="discord-fixed">
     <iframe src="https://discord.com/widget?id=1037930845849268334&theme=dark" allowtransparency="true" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
   </div>
