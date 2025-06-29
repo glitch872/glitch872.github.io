@@ -1,29 +1,85 @@
-async function loadProfile() {
-  try {
-    const res = await fetch("https://discord-embed.glitch-bypass.com/profile");
-
-    // Check if the response is actually JSON
-    const contentType = res.headers.get("content-type") || "";
-    if (!contentType.includes("application/json")) {
-      throw new Error("Response is not JSON");
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Discord Profile Embed</title>
+  <style>
+    body {
+      margin: 0;
+      background: #2c2f33;
+      color: #fff;
+      font-family: "Segoe UI", sans-serif;
     }
 
-    const data = await res.json();
-    const activity = data.presence?.activities?.[0];
+    .container {
+      padding: 16px;
+      width: 100%;
+      max-width: 400px;
+      box-sizing: border-box;
+    }
 
-    const badges = (data.badges || [])
-      .map(b => BADGE_ICONS[b] ? `<img src="${BADGE_ICONS[b]}" title="${b}">` : '')
-      .join('');
+    .avatar {
+      border-radius: 50%;
+      width: 64px;
+      height: 64px;
+      border: 2px solid #7289da;
+    }
 
-    document.getElementById("profile").innerHTML = `
-      <img src="${data.avatar}" class="avatar" />
-      <h2>${data.username}#${data.discriminator}</h2>
-      <p>Status: ${data.presence?.status || 'offline'}</p>
-      <p>${activity ? `Activity: ${activity.name}` : ''}</p>
-      <div class="badges">${badges}</div>
-    `;
-  } catch (err) {
-    console.error("Profile load error:", err);
-    document.getElementById("profile").innerText = "Failed to load profile data.";
-  }
-}
+    h2 {
+      font-size: 1.2rem;
+      margin: 8px 0 4px;
+    }
+
+    .badges img {
+      height: 24px;
+      vertical-align: middle;
+      margin-right: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="profile">Loading...</div>
+
+  <script>
+    const BADGE_ICONS = {
+      ActiveDeveloper: "https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4bb.png",
+      HypeSquadOnlineHouse1: "https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f3e0.png",
+      HypeSquadOnlineHouse2: "https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f3eb.png",
+      HypeSquadOnlineHouse3: "https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f3c1.png"
+    };
+
+    async function loadProfile() {
+      try {
+        const res = await fetch("https://discord-embed.glitch-bypass.com/profile");
+        const contentType = res.headers.get("content-type") || "";
+
+        if (!contentType.includes("application/json")) {
+          throw new Error("Response is not JSON");
+        }
+
+        const data = await res.json();
+        const activity = data.presence?.activities?.[0];
+
+        const badges = (data.badges || [])
+          .map(b => BADGE_ICONS[b] ? `<img src="${BADGE_ICONS[b]}" title="${b}">` : '')
+          .join('');
+
+        document.getElementById("profile").innerHTML = `
+          <img src="${data.avatar}" class="avatar" />
+          <h2>${data.username}#${data.discriminator}</h2>
+          <p>Status: ${data.presence?.status || 'offline'}</p>
+          <p>${activity ? `Activity: ${activity.name}` : ''}</p>
+          <div class="badges">${badges}</div>
+        `;
+      } catch (err) {
+        console.error("Profile load error:", err);
+        document.getElementById("profile").innerText = "Failed to load profile data.";
+      }
+    }
+
+    loadProfile();
+    setInterval(loadProfile, 30000);
+  </script>
+</body>
+</html>
