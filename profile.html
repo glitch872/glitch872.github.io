@@ -50,25 +50,33 @@
     };
 
     async function loadProfile() {
-      const res = await fetch("https://discord-embed.glitch-bypass.com/profile");
-      const data = await res.json();
-      const activity = data.presence?.activities?.[0];
+      try {
+        const res = await fetch("/profile");
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
 
-      const badges = (data.badges || [])
-        .map(b => BADGE_ICONS[b] ? `<img src="${BADGE_ICONS[b]}" title="${b}">` : '')
-        .join('');
+        if (!data.username) throw new Error("Missing username in data");
 
-      document.getElementById("profile").innerHTML = `
-        <img src="${data.avatar}" class="avatar" />
-        <h2>${data.username}#${data.discriminator}</h2>
-        <p>Status: ${data.presence?.status || 'offline'}</p>
-        <p>${activity ? `Activity: ${activity.name}` : ''}</p>
-        <div class="badges">${badges}</div>
-      `;
+        const activity = data.presence?.activities?.[0];
+        const badges = (data.badges || [])
+          .map(b => BADGE_ICONS[b] ? `<img src="${BADGE_ICONS[b]}" title="${b}">` : '')
+          .join('');
+
+        document.getElementById("profile").innerHTML = `
+          <img src="${data.avatar}" class="avatar" />
+          <h2>${data.username}#${data.discriminator}</h2>
+          <p>Status: ${data.presence?.status || 'offline'}</p>
+          <p>${activity ? `Activity: ${activity.name}` : ''}</p>
+          <div class="badges">${badges}</div>
+        `;
+      } catch (err) {
+        document.getElementById("profile").innerText = "Failed to load profile.";
+        console.error("Profile load error:", err);
+      }
     }
 
     loadProfile();
-    setInterval(loadProfile, 30000);
+    setInterval(loadProfile, 5000); // Refresh every 5 seconds
   </script>
 </body>
 </html>
