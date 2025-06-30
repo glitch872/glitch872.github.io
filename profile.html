@@ -56,7 +56,10 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      /* Allow to grow wide enough to fit username */
       min-width: 0;
+      max-width: none; /* Remove max-width if any */
+      overflow: visible !important; /* Ensure no clipping */
     }
 
     .username-line {
@@ -64,17 +67,20 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      max-width: 100%;
-      white-space: nowrap;
-      /* No overflow or ellipsis here */
+      /* Remove max-width and overflow */
+      max-width: none;
+      overflow: visible;
+      white-space: nowrap; /* keep nowrap here */
+      text-overflow: clip; /* explicitly prevent ellipsis */
     }
 
     .username-text {
       display: inline-block;
-      white-space: nowrap; /* Prevent wrapping */
+      white-space: nowrap; /* no wrap */
       font-weight: 600;
       line-height: 1.2;
-      /* No text-overflow or overflow here */
+      overflow: visible;  /* no clipping */
+      text-overflow: clip; /* no ellipsis */
       transition: none !important;
     }
 
@@ -128,9 +134,10 @@
         const status = data.presence?.status || 'offline';
         const username = data.username;
 
-        // Calculate available width inside iframe/container
+        // Calculate available width inside container
+        // Subtract avatar width + margins from container width to get max width for username
         const containerWidth = document.body.clientWidth;
-        const maxUsernameWidth = containerWidth - 64 - 16 - 16; // avatar + margin + margin
+        const maxUsernameWidth = containerWidth - 64 - 16 - 16; // avatar + left margin + right margin
 
         // Create invisible test span to measure username width dynamically
         const testSpan = document.createElement('span');
@@ -146,7 +153,6 @@
         let fontSize = 1.2;
         testSpan.style.fontSize = fontSize + 'rem';
 
-        // Scale down font size until username fits or minimum font size reached
         while (testSpan.offsetWidth > maxUsernameWidth && fontSize > 0.6) {
           fontSize -= 0.05;
           testSpan.style.fontSize = fontSize + 'rem';
