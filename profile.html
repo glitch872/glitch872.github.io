@@ -17,36 +17,36 @@
     }
 
     .container {
-      padding: 16px;
+      padding: 12px;
       width: 100%;
-      height: 100%;
       box-sizing: border-box;
       display: flex;
       align-items: center;
+      height: 100%;
     }
 
     .avatar-wrapper {
       position: relative;
-      width: 64px;
-      height: 64px;
+      width: 48px;
+      height: 48px;
       flex-shrink: 0;
     }
 
     .avatar {
-      width: 64px;
-      height: 64px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
       display: block;
     }
 
     .status-dot {
       position: absolute;
-      width: 18px;
-      height: 18px;
+      width: 14px;
+      height: 14px;
       border-radius: 50%;
       bottom: 0;
       right: 0;
-      border: 3px solid #2c2f33;
+      border: 2px solid #2c2f33;
       background: gray;
       box-sizing: content-box;
     }
@@ -57,22 +57,24 @@
     .status-dot[data-status="offline"] { background: #747f8d; }
 
     .profile-info {
-      margin-left: 16px;
+      margin-left: 12px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       flex: 1;
       overflow: hidden;
+      height: 100%;
     }
 
     .username-line {
       font-weight: 600;
       display: flex;
       align-items: center;
-      max-width: 100%;
       white-space: nowrap;
       overflow: hidden;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
+      transition: font-size 0.3s ease;
+      max-width: 100%;
     }
 
     .username-text {
@@ -84,19 +86,29 @@
     }
 
     .pronouns {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       color: #b9bbbe;
       margin-top: 2px;
+      user-select: none;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
     }
 
     .badges {
       margin-top: 4px;
+      display: flex;
+      gap: 4px;
+      overflow: hidden;
+      max-width: 100%;
     }
 
     .badges img {
-      height: 24px;
+      height: 20px;
       vertical-align: middle;
-      margin-right: 4px;
+      border-radius: 3px;
+      flex-shrink: 0;
     }
   </style>
 </head>
@@ -141,12 +153,12 @@
             <div class="username-line">
               <span class="username-text">${data.username}</span>
             </div>
-            ${data.pronouns ? `<div class="pronouns">${data.pronouns}</div>` : ''}
+            ${data.pronouns ? `<div class="pronouns" title="${data.pronouns}">${data.pronouns}</div>` : ''}
             <div class="badges">${badges}</div>
           </div>
         `;
 
-        // Delay slightly to let DOM render first
+        // Animate font resizing after layout settles
         setTimeout(() => {
           const usernameEl = document.querySelector('.username-text');
           const parentEl = usernameEl?.parentElement;
@@ -155,7 +167,7 @@
             usernameEl.style.overflow = 'visible';
             usernameEl.style.textOverflow = 'unset';
 
-            let fontSize = 1.2;
+            let fontSize = 1.1;
             const maxWidth = parentEl.offsetWidth;
 
             while (usernameEl.scrollWidth > maxWidth && fontSize > 0.6) {
