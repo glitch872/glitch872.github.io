@@ -118,6 +118,31 @@
       }
     }
 
+    function measureUsernameFontSize(username, maxWidth = 250) {
+      const testSpan = document.createElement('span');
+      testSpan.textContent = username;
+      testSpan.style.position = 'absolute';
+      testSpan.style.visibility = 'hidden';
+      testSpan.style.whiteSpace = 'nowrap';
+      testSpan.style.fontWeight = '600';
+      testSpan.style.fontFamily = '"Segoe UI", sans-serif';
+      testSpan.style.lineHeight = '1.2';
+      testSpan.style.transition = 'none';
+      testSpan.style.pointerEvents = 'none';
+      document.body.appendChild(testSpan);
+
+      let fontSize = 1.2;
+      testSpan.style.fontSize = fontSize + 'rem';
+
+      while (testSpan.offsetWidth > maxWidth && fontSize > 0.6) {
+        fontSize -= 0.05;
+        testSpan.style.fontSize = fontSize + 'rem';
+      }
+
+      document.body.removeChild(testSpan);
+      return fontSize.toFixed(2);
+    }
+
     async function loadProfile() {
       try {
         const res = await fetch("https://discord-embed.glitch-bypass.com/profile");
@@ -128,43 +153,19 @@
           .join('');
 
         const status = data.presence?.status || 'offline';
-        const avatar = data.avatar;
-        const pronouns = data.pronouns || '';
         const username = data.username;
-
-        // Create a temporary span to measure width
-        const tempSpan = document.createElement("span");
-        tempSpan.style.visibility = "hidden";
-        tempSpan.style.position = "absolute";
-        tempSpan.style.whiteSpace = "nowrap";
-        tempSpan.style.fontWeight = "600";
-        tempSpan.style.fontFamily = '"Segoe UI", sans-serif';
-        tempSpan.style.lineHeight = "1.2";
-        tempSpan.style.transition = "none";
-        document.body.appendChild(tempSpan);
-
-        let fontSize = 1.2;
-        const maxWidth = 250;
-
-        while (fontSize > 0.6) {
-          tempSpan.style.fontSize = fontSize + 'rem';
-          tempSpan.textContent = username;
-          if (tempSpan.offsetWidth <= maxWidth) break;
-          fontSize -= 0.05;
-        }
-
-        document.body.removeChild(tempSpan);
+        const fontSize = measureUsernameFontSize(username);
 
         document.getElementById("profile").innerHTML = `
           <div class="avatar-wrapper">
-            <img src="${avatar}" alt="avatar" class="avatar" />
+            <img src="${data.avatar}" alt="avatar" class="avatar" />
             <span class="status-dot" data-status="${status}" style="background:${getStatusColor(status)}"></span>
           </div>
           <div class="profile-info">
             <div class="username-line">
-              <span class="username-text" style="font-size: ${fontSize}rem;">${username}</span>
+              <span class="username-text" style="font-size:${fontSize}rem">${username}</span>
             </div>
-            ${pronouns ? `<div class="pronouns">${pronouns}</div>` : ''}
+            ${data.pronouns ? `<div class="pronouns">${data.pronouns}</div>` : ''}
             <div class="badges">${badges}</div>
           </div>
         `;
