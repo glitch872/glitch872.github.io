@@ -43,43 +43,41 @@
 
   <script>
     const BADGE_ICONS = {
-      ActiveDeveloper: "https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4bb.png",
-      HypeSquadOnlineHouse1: "https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f3e0.png",
-      HypeSquadOnlineHouse2: "https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f3eb.png",
-      HypeSquadOnlineHouse3: "https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f3c1.png"
+      ActiveDeveloper: "https://cdn.discordapp.com/badge-icons/6bdc42827a38498929a4920da12695d9.png",
+      HypeSquadOnlineHouse1: "https://cdn.discordapp.com/badge-icons/8a88d63823d8a71cd5e390baa45efa02.png", // Bravery
+      HypeSquadOnlineHouse2: "https://cdn.discordapp.com/badge-icons/011940fd013da3f7fb926e4a1cd2e618.png", // Brilliance
+      HypeSquadOnlineHouse3: "https://cdn.discordapp.com/badge-icons/3aa41de486fa12454c3761e8e223442e.png"  // Balance
     };
 
-    async function loadProfile() {
+    const container = document.getElementById("profile");
+
+    const source = new EventSource("https://discord-embed.glitch-bypass.com/events");
+
+    source.onmessage = (event) => {
       try {
-        const res = await fetch("https://discord-embed.glitch-bypass.com/profile");
-        const contentType = res.headers.get("content-type") || "";
-
-        if (!contentType.includes("application/json")) {
-          throw new Error("Response is not JSON");
-        }
-
-        const data = await res.json();
+        const data = JSON.parse(event.data);
         const activity = data.presence?.activities?.[0];
 
         const badges = (data.badges || [])
           .map(b => BADGE_ICONS[b] ? `<img src="${BADGE_ICONS[b]}" title="${b}">` : '')
           .join('');
 
-        document.getElementById("profile").innerHTML = `
+        container.innerHTML = `
           <img src="${data.avatar}" class="avatar" />
           <h2>${data.username}#${data.discriminator}</h2>
           <p>Status: ${data.presence?.status || 'offline'}</p>
           <p>${activity ? `Activity: ${activity.name}` : ''}</p>
           <div class="badges">${badges}</div>
         `;
-      } catch (err) {
-        console.error("Profile load error:", err);
-        document.getElementById("profile").innerText = "Failed to load profile data.";
+      } catch (e) {
+        container.innerHTML = `<p>Error loading profile</p>`;
+        console.error("Failed to parse event data:", e);
       }
-    }
+    };
 
-    loadProfile();
-    setInterval(loadProfile, 30000);
+    source.onerror = () => {
+      container.innerHTML = `<p>Disconnected from live updates</p>`;
+    };
   </script>
 </body>
 </html>
