@@ -78,7 +78,7 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      transition: none !important;
+      transition: none !important; /* Disable animation */
     }
 
     .pronouns {
@@ -149,6 +149,9 @@
         const parentEl = usernameEl.parentElement;
 
         if (usernameEl && parentEl) {
+          // Disable transitions
+          usernameEl.style.transition = 'none';
+
           // Temporarily remove ellipsis/overflow styles
           usernameEl.style.overflow = 'visible';
           usernameEl.style.textOverflow = 'unset';
