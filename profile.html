@@ -68,7 +68,6 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      font-size: 1.2rem;
       line-height: 1.2;
     }
 
@@ -78,7 +77,7 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      transition: none !important; /* Disable animation */
+      transition: none !important;
     }
 
     .pronouns {
@@ -110,7 +109,7 @@
     };
 
     function getStatusColor(status) {
-      switch(status) {
+      switch (status) {
         case 'online': return '#43b581';
         case 'idle': return '#faa61a';
         case 'dnd': return '#f04747';
@@ -129,47 +128,47 @@
           .join('');
 
         const status = data.presence?.status || 'offline';
+        const avatar = data.avatar;
+        const pronouns = data.pronouns || '';
+        const username = data.username;
+
+        // Create a temporary span to measure width
+        const tempSpan = document.createElement("span");
+        tempSpan.style.visibility = "hidden";
+        tempSpan.style.position = "absolute";
+        tempSpan.style.whiteSpace = "nowrap";
+        tempSpan.style.fontWeight = "600";
+        tempSpan.style.fontFamily = '"Segoe UI", sans-serif';
+        tempSpan.style.lineHeight = "1.2";
+        tempSpan.style.transition = "none";
+        document.body.appendChild(tempSpan);
+
+        let fontSize = 1.2;
+        const maxWidth = 250;
+
+        while (fontSize > 0.6) {
+          tempSpan.style.fontSize = fontSize + 'rem';
+          tempSpan.textContent = username;
+          if (tempSpan.offsetWidth <= maxWidth) break;
+          fontSize -= 0.05;
+        }
+
+        document.body.removeChild(tempSpan);
 
         document.getElementById("profile").innerHTML = `
           <div class="avatar-wrapper">
-            <img src="${data.avatar}" alt="avatar" class="avatar" />
+            <img src="${avatar}" alt="avatar" class="avatar" />
             <span class="status-dot" data-status="${status}" style="background:${getStatusColor(status)}"></span>
           </div>
           <div class="profile-info">
             <div class="username-line">
-              <span class="username-text">${data.username}</span>
+              <span class="username-text" style="font-size: ${fontSize}rem;">${username}</span>
             </div>
-            ${data.pronouns ? `<div class="pronouns">${data.pronouns}</div>` : ''}
+            ${pronouns ? `<div class="pronouns">${pronouns}</div>` : ''}
             <div class="badges">${badges}</div>
           </div>
         `;
-
-        // Scale down font size if username is too wide
-        const usernameEl = document.querySelector('.username-text');
-        const parentEl = usernameEl.parentElement;
-
-        if (usernameEl && parentEl) {
-          // Disable transitions
-          usernameEl.style.transition = 'none';
-
-          // Temporarily remove ellipsis/overflow styles
-          usernameEl.style.overflow = 'visible';
-          usernameEl.style.textOverflow = 'unset';
-
-          let fontSize = 1.2; // rem
-          const maxWidth = parentEl.offsetWidth;
-
-          while (usernameEl.scrollWidth > maxWidth && fontSize > 0.6) {
-            fontSize -= 0.05;
-            usernameEl.style.fontSize = fontSize + 'rem';
-          }
-
-          // Restore ellipsis/overflow styles
-          usernameEl.style.overflow = 'hidden';
-          usernameEl.style.textOverflow = 'ellipsis';
-        }
-
-      } catch(e) {
+      } catch (e) {
         document.getElementById("profile").textContent = "Failed to load profile";
         console.error("Profile load error:", e);
       }
