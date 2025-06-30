@@ -78,6 +78,7 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      transition: font-size 0.3s ease;
     }
 
     .pronouns {
@@ -143,17 +144,26 @@
           </div>
         `;
 
-        // Dynamically reduce font size of username if it's too long
         const usernameEl = document.querySelector('.username-text');
-        if (usernameEl) {
-          let fontSize = 1.2; // rem
-          const parentWidth = usernameEl.parentElement.offsetWidth;
-          while (usernameEl.scrollWidth > parentWidth && fontSize > 0.6) {
+        const parentEl = usernameEl.parentElement;
+
+        if (usernameEl && parentEl) {
+          usernameEl.style.overflow = 'visible';
+          usernameEl.style.textOverflow = 'unset';
+
+          let fontSize = 1.2;
+          const maxWidth = parentEl.offsetWidth;
+
+          while (usernameEl.scrollWidth > maxWidth && fontSize > 0.6) {
             fontSize -= 0.05;
             usernameEl.style.fontSize = fontSize + 'rem';
           }
+
+          usernameEl.style.overflow = 'hidden';
+          usernameEl.style.textOverflow = 'ellipsis';
         }
-      } catch(e) {
+
+      } catch (e) {
         document.getElementById("profile").textContent = "Failed to load profile";
         console.error("Profile load error:", e);
       }
