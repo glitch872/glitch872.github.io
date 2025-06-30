@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Discord Profile Embed</title>
   <style>
     body {
@@ -36,6 +36,27 @@
       vertical-align: middle;
       margin-right: 4px;
     }
+
+    .status-dot {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+    .status-dot[data-status="online"] {
+      background-color: #43b581;
+    }
+    .status-dot[data-status="idle"] {
+      background-color: #faa61a;
+    }
+    .status-dot[data-status="dnd"] {
+      background-color: #f04747;
+    }
+    .status-dot[data-status="offline"] {
+      background-color: #747f8d;
+    }
   </style>
 </head>
 <body>
@@ -44,40 +65,36 @@
   <script>
     const BADGE_ICONS = {
       ActiveDeveloper: "https://cdn.discordapp.com/badge-icons/6bdc42827a38498929a4920da12695d9.png",
-      HypeSquadOnlineHouse1: "https://cdn.discordapp.com/badge-icons/8a88d63823d8a71cd5e390baa45efa02.png", // Bravery
-      HypeSquadOnlineHouse2: "https://cdn.discordapp.com/badge-icons/011940fd013da3f7fb926e4a1cd2e618.png", // Brilliance
-      HypeSquadOnlineHouse3: "https://cdn.discordapp.com/badge-icons/3aa41de486fa12454c3761e8e223442e.png"  // Balance
+      HypeSquadOnlineHouse1: "https://cdn.discordapp.com/badge-icons/011940fd013da3f7fb926e4a1cd2e618.png",
+      HypeSquadOnlineHouse2: "https://cdn.discordapp.com/badge-icons/8a88d63823d8a71cd5e390baa45efa02.png",
+      HypeSquadOnlineHouse3: "https://cdn.discordapp.com/badge-icons/3aa41de486fa12454c3761e8e223442e.png"
     };
 
-    const container = document.getElementById("profile");
-
-    const source = new EventSource("https://discord-embed.glitch-bypass.com/events");
-
-    source.onmessage = (event) => {
+    async function loadProfile() {
       try {
-        const data = JSON.parse(event.data);
+        const res = await fetch("https://discord-embed.glitch-bypass.com/profile");
+        const data = await res.json();
         const activity = data.presence?.activities?.[0];
-
         const badges = (data.badges || [])
           .map(b => BADGE_ICONS[b] ? `<img src="${BADGE_ICONS[b]}" title="${b}">` : '')
           .join('');
 
+        const container = document.getElementById("profile");
         container.innerHTML = `
           <img src="${data.avatar}" class="avatar" />
           <h2>${data.username}#${data.discriminator}</h2>
-          <p>Status: ${data.presence?.status || 'offline'}</p>
+          <p>Status: <span class="status-dot" data-status="${data.presence?.status || 'offline'}"></span> ${data.presence?.status || 'offline'}</p>
           <p>${activity ? `Activity: ${activity.name}` : ''}</p>
           <div class="badges">${badges}</div>
         `;
-      } catch (e) {
-        container.innerHTML = `<p>Error loading profile</p>`;
-        console.error("Failed to parse event data:", e);
+      } catch (err) {
+        document.getElementById("profile").textContent = "Profile load error.";
+        console.error("Profile load error:", err);
       }
-    };
+    }
 
-    source.onerror = () => {
-      container.innerHTML = `<p>Disconnected from live updates</p>`;
-    };
+    loadProfile();
+    setInterval(loadProfile, 10000); // refresh every 10 seconds
   </script>
 </body>
 </html>
