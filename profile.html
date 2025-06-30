@@ -168,10 +168,11 @@
             usernameEl.style.textOverflow = 'unset';
 
             let fontSize = 1.1;
+            const minFontSize = 0.85;  // Minimum comfortable font size in rem
             const maxWidth = parentEl.offsetWidth;
 
-            while (usernameEl.scrollWidth > maxWidth && fontSize > 0.6) {
-              fontSize -= 0.05;
+            while (usernameEl.scrollWidth > maxWidth && fontSize > minFontSize) {
+              fontSize -= 0.03;  // smaller decrements for smoother shrinking
               usernameEl.style.fontSize = fontSize + 'rem';
             }
 
