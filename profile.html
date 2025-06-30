@@ -5,17 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Discord Profile Embed</title>
   <style>
-    body {
+    html, body {
       margin: 0;
+      padding: 0;
       background: #2c2f33;
       color: #fff;
       font-family: "Segoe UI", sans-serif;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
     }
 
     .container {
       padding: 16px;
       width: 100%;
-      max-width: 400px;
+      height: 100%;
       box-sizing: border-box;
       display: flex;
       align-items: center;
@@ -57,24 +61,22 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      flex: 1;
+      overflow: hidden;
     }
 
     .username-line {
       font-weight: 600;
       display: flex;
       align-items: center;
-      gap: 8px;
-      max-width: 250px;
+      max-width: 100%;
       white-space: nowrap;
       overflow: hidden;
-      text-overflow: ellipsis;
       font-size: 1.2rem;
-      line-height: 1.2;
     }
 
     .username-text {
       display: inline-block;
-      max-width: 100%;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -144,24 +146,27 @@
           </div>
         `;
 
-        const usernameEl = document.querySelector('.username-text');
-        const parentEl = usernameEl.parentElement;
+        // Delay slightly to let DOM render first
+        setTimeout(() => {
+          const usernameEl = document.querySelector('.username-text');
+          const parentEl = usernameEl?.parentElement;
 
-        if (usernameEl && parentEl) {
-          usernameEl.style.overflow = 'visible';
-          usernameEl.style.textOverflow = 'unset';
+          if (usernameEl && parentEl) {
+            usernameEl.style.overflow = 'visible';
+            usernameEl.style.textOverflow = 'unset';
 
-          let fontSize = 1.2;
-          const maxWidth = parentEl.offsetWidth;
+            let fontSize = 1.2;
+            const maxWidth = parentEl.offsetWidth;
 
-          while (usernameEl.scrollWidth > maxWidth && fontSize > 0.6) {
-            fontSize -= 0.05;
-            usernameEl.style.fontSize = fontSize + 'rem';
+            while (usernameEl.scrollWidth > maxWidth && fontSize > 0.6) {
+              fontSize -= 0.05;
+              usernameEl.style.fontSize = fontSize + 'rem';
+            }
+
+            usernameEl.style.overflow = 'hidden';
+            usernameEl.style.textOverflow = 'ellipsis';
           }
-
-          usernameEl.style.overflow = 'hidden';
-          usernameEl.style.textOverflow = 'ellipsis';
-        }
+        }, 10);
 
       } catch (e) {
         document.getElementById("profile").textContent = "Failed to load profile";
