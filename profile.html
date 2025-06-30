@@ -64,17 +64,17 @@
       display: flex;
       align-items: center;
       gap: 8px;
+      max-width: 100%;
       white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      line-height: 1.2;
+      /* No overflow or ellipsis here */
     }
 
     .username-text {
       display: inline-block;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      white-space: nowrap; /* Prevent wrapping */
+      font-weight: 600;
+      line-height: 1.2;
+      /* No text-overflow or overflow here */
       transition: none !important;
     }
 
@@ -116,30 +116,6 @@
       }
     }
 
-    function measureUsernameFontSize(username, maxWidth) {
-      const testSpan = document.createElement('span');
-      testSpan.textContent = username;
-      testSpan.style.position = 'absolute';
-      testSpan.style.visibility = 'hidden';
-      testSpan.style.whiteSpace = 'nowrap';
-      testSpan.style.fontWeight = '600';
-      testSpan.style.fontFamily = '"Segoe UI", sans-serif';
-      testSpan.style.lineHeight = '1.2';
-      testSpan.style.transition = 'none';
-      document.body.appendChild(testSpan);
-
-      let fontSize = 1.2;
-      testSpan.style.fontSize = fontSize + 'rem';
-
-      while (testSpan.offsetWidth > maxWidth && fontSize > 0.6) {
-        fontSize -= 0.05;
-        testSpan.style.fontSize = fontSize + 'rem';
-      }
-
-      document.body.removeChild(testSpan);
-      return fontSize.toFixed(2);
-    }
-
     async function loadProfile() {
       try {
         const res = await fetch("https://discord-embed.glitch-bypass.com/profile");
@@ -152,10 +128,31 @@
         const status = data.presence?.status || 'offline';
         const username = data.username;
 
-        // Measure available width for username inside iframe
+        // Calculate available width inside iframe/container
         const containerWidth = document.body.clientWidth;
-        const availableTextWidth = containerWidth - 64 - 16 - 16; // avatar + spacing
-        const fontSize = measureUsernameFontSize(username, availableTextWidth);
+        const maxUsernameWidth = containerWidth - 64 - 16 - 16; // avatar + margin + margin
+
+        // Create invisible test span to measure username width dynamically
+        const testSpan = document.createElement('span');
+        testSpan.textContent = username;
+        testSpan.style.position = 'absolute';
+        testSpan.style.visibility = 'hidden';
+        testSpan.style.whiteSpace = 'nowrap';
+        testSpan.style.fontFamily = '"Segoe UI", sans-serif';
+        testSpan.style.fontWeight = '600';
+        testSpan.style.lineHeight = '1.2';
+        document.body.appendChild(testSpan);
+
+        let fontSize = 1.2;
+        testSpan.style.fontSize = fontSize + 'rem';
+
+        // Scale down font size until username fits or minimum font size reached
+        while (testSpan.offsetWidth > maxUsernameWidth && fontSize > 0.6) {
+          fontSize -= 0.05;
+          testSpan.style.fontSize = fontSize + 'rem';
+        }
+
+        document.body.removeChild(testSpan);
 
         document.getElementById("profile").innerHTML = `
           <div class="avatar-wrapper">
@@ -164,7 +161,7 @@
           </div>
           <div class="profile-info">
             <div class="username-line">
-              <span class="username-text" style="font-size:${fontSize}rem">${username}</span>
+              <span class="username-text" style="font-size:${fontSize}rem;">${username}</span>
             </div>
             ${data.pronouns ? `<div class="pronouns">${data.pronouns}</div>` : ''}
             <div class="badges">${badges}</div>
