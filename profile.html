@@ -27,12 +27,14 @@
       height: 64px;
       flex-shrink: 0;
     }
+
     .avatar {
       width: 64px;
       height: 64px;
       border-radius: 50%;
       display: block;
     }
+
     .status-dot {
       position: absolute;
       width: 18px;
@@ -44,6 +46,7 @@
       background: gray;
       box-sizing: content-box;
     }
+
     .status-dot[data-status="online"] { background: #43b581; }
     .status-dot[data-status="idle"] { background: #faa61a; }
     .status-dot[data-status="dnd"] { background: #f04747; }
@@ -57,11 +60,24 @@
     }
 
     .username-line {
-      font-size: 1.2rem;
       font-weight: 600;
       display: flex;
       align-items: center;
       gap: 8px;
+      max-width: 250px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 1.2rem;
+      line-height: 1.2;
+    }
+
+    .username-text {
+      display: inline-block;
+      max-width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .pronouns {
@@ -120,12 +136,23 @@
           </div>
           <div class="profile-info">
             <div class="username-line">
-              ${data.username}
+              <span class="username-text">${data.username}</span>
             </div>
             ${data.pronouns ? `<div class="pronouns">${data.pronouns}</div>` : ''}
             <div class="badges">${badges}</div>
           </div>
         `;
+
+        // Dynamically reduce font size of username if it's too long
+        const usernameEl = document.querySelector('.username-text');
+        if (usernameEl) {
+          let fontSize = 1.2; // rem
+          const parentWidth = usernameEl.parentElement.offsetWidth;
+          while (usernameEl.scrollWidth > parentWidth && fontSize > 0.6) {
+            fontSize -= 0.05;
+            usernameEl.style.fontSize = fontSize + 'rem';
+          }
+        }
       } catch(e) {
         document.getElementById("profile").textContent = "Failed to load profile";
         console.error("Profile load error:", e);
