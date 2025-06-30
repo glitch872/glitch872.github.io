@@ -6,14 +6,15 @@
 <title>Discord Profile Embed</title>
 <style>
   body {
-    margin: 0;
+    margin: 16px 0; /* equal top & bottom margin for balanced spacing */
     background: #2c2f33;
     color: #fff;
     font-family: "Segoe UI", sans-serif;
   }
   .container {
-    padding: 16px;
+    padding: 16px 16px 16px 16px;
     width: 100%;
+    max-width: 400px;
     box-sizing: border-box;
     display: flex;
     align-items: center;
@@ -51,9 +52,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* Make sure it can grow freely */
     width: auto;
-    min-width: 0; /* allow shrinking if needed */
+    min-width: 0;
     overflow: visible !important;
   }
 
@@ -63,9 +63,9 @@
     align-items: center;
     gap: 8px;
     width: auto;
-    white-space: nowrap; /* no wrapping */
+    white-space: nowrap;
     overflow: visible;
-    text-overflow: clip; /* no ellipsis */
+    text-overflow: clip;
   }
 
   .username-text-wrapper {
@@ -75,7 +75,7 @@
 
   .username-text {
     display: inline-block;
-    white-space: nowrap; /* no wrap */
+    white-space: nowrap;
     font-weight: 600;
     line-height: 1.2;
     overflow: visible;
@@ -149,48 +149,34 @@
           </div>
         `;
 
-        // Scale username font only
-        const container = document.querySelector('.container');
-        const avatarWidth = 64;
-        const marginLeft = 16; // between avatar and profile-info
-        const marginRight = 16; // container padding right (safe margin)
-        const availableWidth = container.clientWidth - avatarWidth - marginLeft - marginRight;
-
-        const usernameText = document.querySelector('.username-text');
-        const usernameWrapper = document.querySelector('.username-text-wrapper');
-
-        // Reset font size to max before measuring
-        let fontSize = 1.2;
-        usernameText.style.fontSize = fontSize + 'rem';
-
-        // Use a measuring span offscreen for accurate width detection
-        const measuringSpan = document.createElement('span');
-        measuringSpan.style.position = 'absolute';
-        measuringSpan.style.visibility = 'hidden';
-        measuringSpan.style.whiteSpace = 'nowrap';
-        measuringSpan.style.fontWeight = '600';
-        measuringSpan.style.fontFamily = '"Segoe UI", sans-serif';
-        measuringSpan.style.fontSize = fontSize + 'rem';
-        measuringSpan.textContent = username;
-        document.body.appendChild(measuringSpan);
-
-        // Reduce font size until it fits or min font size 0.6rem
-        while (measuringSpan.offsetWidth > availableWidth && fontSize > 0.6) {
-          fontSize -= 0.05;
-          measuringSpan.style.fontSize = fontSize + 'rem';
-        }
-
-        document.body.removeChild(measuringSpan);
-
-        usernameText.style.fontSize = fontSize + 'rem';
+        // No scaling needed since you don't care about "..."
+        // Just send height to parent after rendering
+        sendHeight();
       } catch (e) {
         document.getElementById("profile").textContent = "Failed to load profile";
         console.error("Profile load error:", e);
+        sendHeight();
       }
     }
 
-    loadProfile();
-    setInterval(loadProfile, 15000);
+    function sendHeight() {
+      const height = document.body.scrollHeight;
+      window.parent.postMessage({ type: 'setHeight', height }, '*');
+    }
+
+    window.addEventListener('load', () => {
+      loadProfile();
+      sendHeight();
+    });
+
+    // Also update every 15 seconds (matches your reload interval)
+    setInterval(() => {
+      loadProfile();
+      sendHeight();
+    }, 15000);
+
+    // Optional: update on resize inside iframe
+    window.addEventListener('resize', sendHeight);
   </script>
 </body>
 </html>
