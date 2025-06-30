@@ -1,105 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Discord Profile Embed</title>
-  <style>
-    body {
-      margin: 0;
-      background: #2c2f33;
-      color: #fff;
-      font-family: "Segoe UI", sans-serif;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Discord Profile Embed</title>
+<style>
+  body {
+    margin: 0;
+    background: #2c2f33;
+    color: #fff;
+    font-family: "Segoe UI", sans-serif;
+  }
+  .container {
+    padding: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+  }
+  .avatar-wrapper {
+    position: relative;
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+  }
+  .avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: block;
+  }
+  .status-dot {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    bottom: 0;
+    right: 0;
+    border: 3px solid #2c2f33;
+    background: gray;
+    box-sizing: content-box;
+  }
+  .status-dot[data-status="online"] { background: #43b581; }
+  .status-dot[data-status="idle"] { background: #faa61a; }
+  .status-dot[data-status="dnd"] { background: #f04747; }
+  .status-dot[data-status="offline"] { background: #747f8d; }
 
-    .container {
-      padding: 16px;
-      width: 100%;
-      box-sizing: border-box;
-      display: flex;
-      align-items: center;
-    }
+  .profile-info {
+    margin-left: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Make sure it can grow freely */
+    width: auto;
+    min-width: 0; /* allow shrinking if needed */
+    overflow: visible !important;
+  }
 
-    .avatar-wrapper {
-      position: relative;
-      width: 64px;
-      height: 64px;
-      flex-shrink: 0;
-    }
+  .username-line {
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: auto;
+    white-space: nowrap; /* no wrapping */
+    overflow: visible;
+    text-overflow: clip; /* no ellipsis */
+  }
 
-    .avatar {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      display: block;
-    }
+  .username-text-wrapper {
+    display: block;
+    max-width: 100%;
+  }
 
-    .status-dot {
-      position: absolute;
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      bottom: 0;
-      right: 0;
-      border: 3px solid #2c2f33;
-      background: gray;
-      box-sizing: content-box;
-    }
+  .username-text {
+    display: inline-block;
+    white-space: nowrap; /* no wrap */
+    font-weight: 600;
+    line-height: 1.2;
+    overflow: visible;
+    text-overflow: clip;
+    transition: none !important;
+  }
 
-    .status-dot[data-status="online"] { background: #43b581; }
-    .status-dot[data-status="idle"] { background: #faa61a; }
-    .status-dot[data-status="dnd"] { background: #f04747; }
-    .status-dot[data-status="offline"] { background: #747f8d; }
+  .pronouns {
+    font-size: 0.9rem;
+    color: #b9bbbe;
+    margin-top: 2px;
+  }
 
-    .profile-info {
-      margin-left: 16px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      /* Allow to grow wide enough to fit username */
-      min-width: 0;
-      max-width: none; /* Remove max-width if any */
-      overflow: visible !important; /* Ensure no clipping */
-    }
+  .badges {
+    margin-top: 4px;
+  }
 
-    .username-line {
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      /* Remove max-width and overflow */
-      max-width: none;
-      overflow: visible;
-      white-space: nowrap; /* keep nowrap here */
-      text-overflow: clip; /* explicitly prevent ellipsis */
-    }
-
-    .username-text {
-      display: inline-block;
-      white-space: nowrap; /* no wrap */
-      font-weight: 600;
-      line-height: 1.2;
-      overflow: visible;  /* no clipping */
-      text-overflow: clip; /* no ellipsis */
-      transition: none !important;
-    }
-
-    .pronouns {
-      font-size: 0.9rem;
-      color: #b9bbbe;
-      margin-top: 2px;
-    }
-
-    .badges {
-      margin-top: 4px;
-    }
-
-    .badges img {
-      height: 24px;
-      vertical-align: middle;
-      margin-right: 4px;
-    }
-  </style>
+  .badges img {
+    height: 24px;
+    vertical-align: middle;
+    margin-right: 4px;
+  }
+</style>
 </head>
 <body>
   <div class="container" id="profile">Loading...</div>
@@ -134,32 +133,6 @@
         const status = data.presence?.status || 'offline';
         const username = data.username;
 
-        // Calculate available width inside container
-        // Subtract avatar width + margins from container width to get max width for username
-        const containerWidth = document.body.clientWidth;
-        const maxUsernameWidth = containerWidth - 64 - 16 - 16; // avatar + left margin + right margin
-
-        // Create invisible test span to measure username width dynamically
-        const testSpan = document.createElement('span');
-        testSpan.textContent = username;
-        testSpan.style.position = 'absolute';
-        testSpan.style.visibility = 'hidden';
-        testSpan.style.whiteSpace = 'nowrap';
-        testSpan.style.fontFamily = '"Segoe UI", sans-serif';
-        testSpan.style.fontWeight = '600';
-        testSpan.style.lineHeight = '1.2';
-        document.body.appendChild(testSpan);
-
-        let fontSize = 1.2;
-        testSpan.style.fontSize = fontSize + 'rem';
-
-        while (testSpan.offsetWidth > maxUsernameWidth && fontSize > 0.6) {
-          fontSize -= 0.05;
-          testSpan.style.fontSize = fontSize + 'rem';
-        }
-
-        document.body.removeChild(testSpan);
-
         document.getElementById("profile").innerHTML = `
           <div class="avatar-wrapper">
             <img src="${data.avatar}" alt="avatar" class="avatar" />
@@ -167,12 +140,49 @@
           </div>
           <div class="profile-info">
             <div class="username-line">
-              <span class="username-text" style="font-size:${fontSize}rem;">${username}</span>
+              <span class="username-text-wrapper">
+                <span class="username-text" style="font-size:1.2rem;">${username}</span>
+              </span>
             </div>
             ${data.pronouns ? `<div class="pronouns">${data.pronouns}</div>` : ''}
             <div class="badges">${badges}</div>
           </div>
         `;
+
+        // Scale username font only
+        const container = document.querySelector('.container');
+        const avatarWidth = 64;
+        const marginLeft = 16; // between avatar and profile-info
+        const marginRight = 16; // container padding right (safe margin)
+        const availableWidth = container.clientWidth - avatarWidth - marginLeft - marginRight;
+
+        const usernameText = document.querySelector('.username-text');
+        const usernameWrapper = document.querySelector('.username-text-wrapper');
+
+        // Reset font size to max before measuring
+        let fontSize = 1.2;
+        usernameText.style.fontSize = fontSize + 'rem';
+
+        // Use a measuring span offscreen for accurate width detection
+        const measuringSpan = document.createElement('span');
+        measuringSpan.style.position = 'absolute';
+        measuringSpan.style.visibility = 'hidden';
+        measuringSpan.style.whiteSpace = 'nowrap';
+        measuringSpan.style.fontWeight = '600';
+        measuringSpan.style.fontFamily = '"Segoe UI", sans-serif';
+        measuringSpan.style.fontSize = fontSize + 'rem';
+        measuringSpan.textContent = username;
+        document.body.appendChild(measuringSpan);
+
+        // Reduce font size until it fits or min font size 0.6rem
+        while (measuringSpan.offsetWidth > availableWidth && fontSize > 0.6) {
+          fontSize -= 0.05;
+          measuringSpan.style.fontSize = fontSize + 'rem';
+        }
+
+        document.body.removeChild(measuringSpan);
+
+        usernameText.style.fontSize = fontSize + 'rem';
       } catch (e) {
         document.getElementById("profile").textContent = "Failed to load profile";
         console.error("Profile load error:", e);
