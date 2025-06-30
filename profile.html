@@ -5,48 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Discord Profile Embed</title>
   <style>
-    html, body {
+    body {
       margin: 0;
-      padding: 0;
       background: #2c2f33;
       color: #fff;
       font-family: "Segoe UI", sans-serif;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
     }
 
     .container {
-      padding: 12px;
+      padding: 16px;
       width: 100%;
+      max-width: 400px;
       box-sizing: border-box;
       display: flex;
       align-items: center;
-      height: 100%;
     }
 
     .avatar-wrapper {
       position: relative;
-      width: 48px;
-      height: 48px;
+      width: 64px;
+      height: 64px;
       flex-shrink: 0;
     }
 
     .avatar {
-      width: 48px;
-      height: 48px;
+      width: 64px;
+      height: 64px;
       border-radius: 50%;
       display: block;
     }
 
     .status-dot {
       position: absolute;
-      width: 14px;
-      height: 14px;
+      width: 18px;
+      height: 18px;
       border-radius: 50%;
       bottom: 0;
       right: 0;
-      border: 2px solid #2c2f33;
+      border: 3px solid #2c2f33;
       background: gray;
       box-sizing: content-box;
     }
@@ -57,58 +53,47 @@
     .status-dot[data-status="offline"] { background: #747f8d; }
 
     .profile-info {
-      margin-left: 12px;
+      margin-left: 16px;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      flex: 1;
-      overflow: hidden;
-      height: 100%;
     }
 
     .username-line {
       font-weight: 600;
       display: flex;
       align-items: center;
+      gap: 8px;
+      max-width: 250px;
       white-space: nowrap;
       overflow: hidden;
-      font-size: 1.1rem;
-      transition: font-size 0.3s ease;
-      max-width: 100%;
+      text-overflow: ellipsis;
+      font-size: 1.2rem;
+      line-height: 1.2;
     }
 
     .username-text {
       display: inline-block;
+      max-width: 100%;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      transition: font-size 0.3s ease;
     }
 
     .pronouns {
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       color: #b9bbbe;
       margin-top: 2px;
-      user-select: none;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      max-width: 100%;
     }
 
     .badges {
       margin-top: 4px;
-      display: flex;
-      gap: 4px;
-      overflow: hidden;
-      max-width: 100%;
     }
 
     .badges img {
-      height: 20px;
+      height: 24px;
       vertical-align: middle;
-      border-radius: 3px;
-      flex-shrink: 0;
+      margin-right: 4px;
     }
   </style>
 </head>
@@ -153,35 +138,34 @@
             <div class="username-line">
               <span class="username-text">${data.username}</span>
             </div>
-            ${data.pronouns ? `<div class="pronouns" title="${data.pronouns}">${data.pronouns}</div>` : ''}
+            ${data.pronouns ? `<div class="pronouns">${data.pronouns}</div>` : ''}
             <div class="badges">${badges}</div>
           </div>
         `;
 
-        // Animate font resizing after layout settles
-        setTimeout(() => {
-          const usernameEl = document.querySelector('.username-text');
-          const parentEl = usernameEl?.parentElement;
+        // Scale down font size if username is too wide
+        const usernameEl = document.querySelector('.username-text');
+        const parentEl = usernameEl.parentElement;
 
-          if (usernameEl && parentEl) {
-            usernameEl.style.overflow = 'visible';
-            usernameEl.style.textOverflow = 'unset';
+        if (usernameEl && parentEl) {
+          // Temporarily remove ellipsis/overflow styles
+          usernameEl.style.overflow = 'visible';
+          usernameEl.style.textOverflow = 'unset';
 
-            let fontSize = 1.1;
-            const minFontSize = 0.85;  // Minimum comfortable font size in rem
-            const maxWidth = parentEl.offsetWidth;
+          let fontSize = 1.2; // rem
+          const maxWidth = parentEl.offsetWidth;
 
-            while (usernameEl.scrollWidth > maxWidth && fontSize > minFontSize) {
-              fontSize -= 0.03;  // smaller decrements for smoother shrinking
-              usernameEl.style.fontSize = fontSize + 'rem';
-            }
-
-            usernameEl.style.overflow = 'hidden';
-            usernameEl.style.textOverflow = 'ellipsis';
+          while (usernameEl.scrollWidth > maxWidth && fontSize > 0.6) {
+            fontSize -= 0.05;
+            usernameEl.style.fontSize = fontSize + 'rem';
           }
-        }, 10);
 
-      } catch (e) {
+          // Restore ellipsis/overflow styles
+          usernameEl.style.overflow = 'hidden';
+          usernameEl.style.textOverflow = 'ellipsis';
+        }
+
+      } catch(e) {
         document.getElementById("profile").textContent = "Failed to load profile";
         console.error("Profile load error:", e);
       }
