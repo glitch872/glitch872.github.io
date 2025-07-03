@@ -114,6 +114,10 @@
             background-color: #333;
         }
 
+        .discord-embed {
+            width="300"
+        }
+
         @keyframes fadeIn {
             to {
                 opacity: 1;
@@ -130,11 +134,21 @@
                 top: unset;
                 left: unset;
             }
+            
             body {
                 overflow-y: auto;
             }
+            
             .container {
-                max-height: none;
+                flex-direction: column;
+                padding-left: 1rem;
+                min-width: auto;
+                width: 100%;
+                height: auto;
+            }
+            
+            .discord-embed {
+                width="100%"
             }
         }
     </style>
@@ -169,7 +183,7 @@
             </span>
         </p>
 
-        <iframe id="profileIframe" src="https://glitch-bypass.com/profile.html" width="300" height="auto" style="border:none; border-radius:8px; overflow:hidden;" allowtransparency="true" sandbox="allow-scripts allow-same-origin" scrolling="no"></iframe>
+        <iframe class="discord-embed" id="profileIframe" src="https://glitch-bypass.com/profile.html" height="auto" style="border:none; border-radius:8px; overflow:hidden;" allowtransparency="true" sandbox="allow-scripts allow-same-origin" scrolling="no"></iframe>
 
         <script src="https://glitch-bypass.com/profileSize.js"></script>
         <script>
