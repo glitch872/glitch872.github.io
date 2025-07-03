@@ -77,7 +77,9 @@
     }
 
     .back-link {
-      align-self: flex-start;
+      position: absolute;
+      top: 20px;
+      left: 20px;
       font-size: 0.9rem;
       color: #fff;
       background-color: rgba(0, 0, 0, 0.5);
@@ -85,7 +87,7 @@
       border-radius: 5px;
       text-decoration: none;
       transition: background-color 0.2s ease, color 0.2s ease;
-      margin-bottom: -1rem;
+      z-index: 1000;
     }
 
     .back-link:hover {
@@ -123,10 +125,13 @@
       }
 
       .back-link {
-        position: relative;
+        position: relative;  /* Change from absolute to relative */
         margin-left: auto;
         margin-right: auto;
-        margin-top: 1rem;
+        margin-top: 1rem;  /* Adjust as needed */
+        margin-bottom: 2rem;
+        top: unset; /* Remove absolute positioning */
+        left: unset; /* Remove left positioning */
       }
 
       body {
