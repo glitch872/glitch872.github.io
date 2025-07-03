@@ -87,9 +87,24 @@
 
         <div class="container">
             <h1>About Me</h1>
+            <p>Hey, I’m <strong>glitch872</strong> — a developer, digital tinkerer, and someone who’s always curious about how things work (and how to make them work differently).</p>
+
+            <p>This site is my playground. I use it to test projects, collect useful scripts, host links to things I’ve made, and keep track of the tools I use and share. If it’s odd, useful, clever, or technically weird — I’m probably interested in it.</p>
+
+            <p>I spend a lot of time exploring tech, messing with web tools, playing around with servers (like Minecraft), and finding creative ways to bypass limitations (ethically, of course). I'm also active on <a href="https://github.com/glitch872">GitHub</a>, <a href="youtube">@glitchkiller872</a> on YouTube, and my Discord is where I hang out most.</p>
+
+            <p>If you're here, you probably enjoy the same kind of chaotic curiosity. Welcome to the glitch zone. 🚀</p>
+
+            <p><strong>Contact me:</strong> <span id="email"></span></p>
             
             <iframe id="profileIframe" src="https://glitch-bypass.com/profile.html" width="300" height="auto" style="border:none; border-radius:8px; overflow:hidden;" allowtransparency="true" sandbox="allow-scripts allow-same-origin" scrolling="no"></iframe>
             <script src="https://glitch-bypass.com/profileSize.js"></script>
+            <script>
+                const user = "contact";
+                const domain = "glitch-bypass.com";
+                document.getElementById("email").innerHTML =
+                    `<a href="mailto:${user}@${domain}">${user}@${domain}</a>`;
+            </script>
         </div>
     </body>
 </html>
