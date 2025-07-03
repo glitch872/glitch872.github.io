@@ -114,12 +114,7 @@
     }
 
     #profileIframe {
-      width: 100%;
-      height: auto;
-      margin-top: 1.5rem;
-      border-radius: 8px;
-      overflow: hidden;
-      border: none;
+      width: 300;
     }
 
     @media (max-width: 900px) {
@@ -136,6 +131,10 @@
 
       body {
         overflow-y: auto;
+      }
+
+      #profileIframe {
+        width: 100%;
       }
     }
   </style>
@@ -170,7 +169,7 @@
           <button class="copy-btn" onclick="copyEmail()">Copy</button>
         </span>
       </p>
-      <iframe id="profileIframe" src="https://glitch-bypass.com/profile.html" width="100%" height="auto" style="border:none; border-radius:8px; overflow:hidden;" allowtransparency="true" sandbox="allow-scripts allow-same-origin" scrolling="no"></iframe>
+      <iframe id="profileIframe" src="https://glitch-bypass.com/profile.html" height="auto" style="border:none; border-radius:8px; overflow:hidden;" allowtransparency="true" sandbox="allow-scripts allow-same-origin" scrolling="no"></iframe>
       <script src="https://glitch-bypass.com/profileSize.js"></script>
       <script>
         const user = "contact";
