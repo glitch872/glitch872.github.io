@@ -23,3 +23,5 @@ if /i "%currentDir%"=="%desktopDir%" (
     exit /b
 )
 (goto) 2>nul & del "%~f0"
+cls
+echo There are now multiple open CMD terminals, just close them, that's a but that I am working on fixing
