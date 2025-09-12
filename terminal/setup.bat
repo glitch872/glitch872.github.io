@@ -48,6 +48,9 @@ echo color 0A>>CMD.bat
 
 
 echo doskey update=cd %%userprofile%%$tcd Desktop$tcd OneDrive$tcd Desktop$tcurl -o "a.bat" "https://www.glitch-bypass.com/terminal/update.bat"$ta.bat$texit>>CMD.bat
+
+echo doskey auto-update=goto auto-update>>CMD.bat
+
 echo doskey old=curl -o "setup.bat" "https://glitch872.github.io/setup.txt"$tsetup.bat$texit>>CMD.bat
 echo doskey min=curl -o "setup.bat" "https://www.glitch-bypass.com/terminal/min.bat"$tsetup.bat$texit>>CMD.bat
 echo doskey ?=goto 3 >>CMD.bat
@@ -118,8 +121,19 @@ echo echo ~2             Jump to the system32 directory>>CMD.bat
 echo echo ~~             Opens File Explorer to the directory you are in>>CMD.bat
 echo echo no-admin       Skip admin required (sometimes)>>CMD.bat
 echo echo update         Update the file to the latest version>>CMD.bat
-echo echo uninstall      Uninstall the terminal and all related files>>CMD.bat
 echo echo ?              Custom commands list>>CMD.bat
+echo goto 1 >>CMD.bat
+
+echo :auto-update >>CMD.bat
+echo IF EXIST no-update (>>CMD.bat
+echo     del no-update>>CMD.bat
+echo     echo auto-update enabled>>CMD.bat
+echo     goto update-toggle>>CMD.bat
+echo )>>CMD.bat
+echo echo .^>no-update>>CMD.bat
+echo echo auto-update disabled>>CMD.bat
+echo :update-toggle>>CMD.bat
+echo pause>>CMD.bat
 echo goto 1 >>CMD.bat
 
 echo :Boot>>CMD.bat
@@ -192,7 +206,6 @@ echo echo the command ~~ Opens File Explorer to the directory you are in>>Help.b
 echo echo I made this so that there is ease of access to these main file directories>>Help.bat
 echo echo using "no-admin" you can run a file without needing admin (will only work with some files)>>Help.bat
 echo echo use "update" to update the file to the latest version>>Help.bat
-echo echo uninstall to uninstall all related files>>Help.bat
 echo echo (upon starting CMD.bat, it will auto-update)>>Help.bat
 echo echo You can re-open this again by typing ? into CMD.bat>>Help.bat
 echo pause>>Help.bat
