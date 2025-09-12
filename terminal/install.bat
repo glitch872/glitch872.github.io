@@ -18,7 +18,7 @@ if /i "%currentDir%"=="%desktopDir%" (
     echo Current script path: %currentDir%
     echo Please move this file to your Desktop and try again.
     echo ===================================================
-    echo
+    echo.
     pause>nul
     exit /b
 )
