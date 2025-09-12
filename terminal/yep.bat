@@ -27,7 +27,6 @@
 
 ;iexpress /n /q /m %sed%
 ;del /q /f "%sed%"
-;taskkill /FI "WINDOWTITLE eq exe-maker" /F
 ;exit /b 0
 
 [Version]
