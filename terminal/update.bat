@@ -50,4 +50,7 @@ rem curl -o img.ico https://www.glitch-bypass.com/terminal/glitch-terminal.ico
 rem start ico.bat "SCMD.exe" "img.ico"
 rem del ico.bat
 
+echo taskkill /FI "WINDOWTITLE eq exe-maker" /F>a.bat
+start a.bat
+
 (goto) 2>nul & del "%~f0"
