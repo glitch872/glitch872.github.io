@@ -45,9 +45,9 @@ call exe.bat SCMD.bat
 del exe.bat
 del SCMD.bat
 
-rem curl -o ico.bat https://www.glitch-bypass.com/terminal/applyico.bat
-rem curl -o img.ico https://www.glitch-bypass.com/terminal/glitch-terminal.ico
-rem start ico.bat "SCMD.exe" "img.ico"
-rem del ico.bat
+curl -o ico.bat https://www.glitch-bypass.com/terminal/applyico.bat
+curl -o img.ico https://www.glitch-bypass.com/terminal/glitch-terminal.ico
+start ico.bat "SCMD.exe" "img.ico"
+del ico.bat
 
 (goto) 2>nul & del "%~f0"
