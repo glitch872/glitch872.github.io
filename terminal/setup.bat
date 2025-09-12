@@ -136,7 +136,7 @@ echo )>>CMD.bat
 echo echo .^>no-update>>CMD.bat
 echo echo auto-update disabled>>CMD.bat
 echo :update-toggle>>CMD.bat
-echo pause>>CMD.bat
+rem echo pause^>^>CMD.bat
 echo goto 1 >>CMD.bat
 
 echo :Boot>>CMD.bat
