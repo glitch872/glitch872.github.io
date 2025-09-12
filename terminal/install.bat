@@ -25,3 +25,4 @@ if /i "%currentDir%"=="%desktopDir%" (
 (goto) 2>nul & del "%~f0"
 cls
 echo There are now multiple open CMD terminals, just close them, that's a bug that I am working on fixing
+pause>nul
