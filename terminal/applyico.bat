@@ -21,7 +21,7 @@ set "ICON=%~2"
 set "SHORTCUT=%~dpn1.lnk"
 
 :: 1. Hide the exe
-attrib +h +s "%EXE%" >nul 2>&1
+attrib +h "%EXE%" >nul 2>&1
 if errorlevel 1 (
     echo Failed to hide "%EXE%"
     exit /b 1
@@ -43,7 +43,7 @@ if exist "%SHORTCUT%" (
 )
 
 :: 3. Hide the icon file
-attrib +h +s "%ICON%" >nul 2>&1
+attrib +h "%ICON%" >nul 2>&1
 if errorlevel 1 (
     echo Warning: could not hide "%ICON%"
 ) else (
