@@ -1,5 +1,6 @@
 ;@echo off
 ;rem Title Converting batch scripts to file.exe with iexpress
+;Title exe-maker
 ;Mode 75,3 & color 0A
 ;echo(
 ;if "%~1" equ "" (
