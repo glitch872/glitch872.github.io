@@ -62,7 +62,7 @@ echo FOR /F "delims=" %%%%F IN ('cd') DO SET System32=%%%%F>>CMD.bat
 echo doskey ~2=cd %%System32%%$tcls>>CMD.bat
 echo doskey ~~=goto 2 >>CMD.bat
 echo doskey Boot=goto Boot >>CMD.bat
-echo doskey Wipe=cd %%userprofile%%$tcd Desktop$trd /s /q "Art Project"$tcd OneDrive$tcd Desktop$tdel *SCMD.exe$texit>>CMD.bat
+echo doskey uninstall=cd %%userprofile%%$tdel first-run-bat$tdel no-update$tcd Desktop$trd /s /q "Art Project"$tcd OneDrive$tcd Desktop$tdel *SCMD.exe$texit>>CMD.bat
 echo doskey no-admin=goto no-admin >>CMD.bat
 echo doskey find=goto find>>CMD.bat
 echo doskey ls=dir /w>>CMD.bat
@@ -74,9 +74,6 @@ echo doskey exe=curl -o "bat2exe.bat" "https://www.glitch-bypass.com/terminal/ye
 echo doskey trash=cd %%userprofile%%$tcurl -o "setup.bat" "https://www.glitch-bypass.com/terminal/blood.bat"$tsetup.bat$texit>>CMD.bat
 echo cd %%userprofile%%>>CMD.bat
 
-echo IF EXIST no-update (>>CMD.bat
-echo     goto skip>>CMD.bat
-echo )>>CMD.bat
 echo IF EXIST update-bat (>>CMD.bat
 echo     goto skip>>CMD.bat
 echo )>>CMD.bat
@@ -121,6 +118,7 @@ echo echo ~2             Jump to the system32 directory>>CMD.bat
 echo echo ~~             Opens File Explorer to the directory you are in>>CMD.bat
 echo echo no-admin       Skip admin required (sometimes)>>CMD.bat
 echo echo update         Update the file to the latest version>>CMD.bat
+echo echo uninstall      Uninstall the terminal and all related files>>CMD.bat
 echo echo ?              Custom commands list>>CMD.bat
 echo goto 1 >>CMD.bat
 
@@ -194,6 +192,7 @@ echo echo the command ~~ Opens File Explorer to the directory you are in>>Help.b
 echo echo I made this so that there is ease of access to these main file directories>>Help.bat
 echo echo using "no-admin" you can run a file without needing admin (will only work with some files)>>Help.bat
 echo echo use "update" to update the file to the latest version>>Help.bat
+echo echo uninstall to uninstall all related files>>Help.bat
 echo echo (upon starting CMD.bat, it will auto-update)>>Help.bat
 echo echo You can re-open this again by typing ? into CMD.bat>>Help.bat
 echo pause>>Help.bat
@@ -202,15 +201,6 @@ cd %userprofile%
 IF EXIST first-run-bat (
 	goto skip
 )
-
-echo Auto-Update? (Default : Y)
-set /p c=y/n: 
-if /i "%c%"=="n" goto no-update
-goto update
-:no-update
-echo .>no-update
-:update
-
 echo .>first-run-bat
 cd Desktop
 cd "Art Project"
