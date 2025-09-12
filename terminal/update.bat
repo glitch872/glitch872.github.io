@@ -36,8 +36,10 @@ echo echo If this fails to start the prompt, either reinstall, or, if you know w
 echo echo Checking for updates>>SCMD.bat
 echo FOR /F "delims=" %%%%F IN ('dir /S /b CMD.bat') DO SET ExePath=%%%%F>>SCMD.bat
 echo cmd /min /C "set __COMPAT_LAYER=RUNASINVOKER && start "" "%%ExePath%%"">>SCMD.bat
+goto skip
 curl -o "setup.bat" "https://www.glitch-bypass.com/terminal/setup.bat"
 start setup.bat
+:skip
 curl -o exe.bat https://www.glitch-bypass.com/terminal/yep.bat
 call exe.bat SCMD.bat
 del exe.bat
