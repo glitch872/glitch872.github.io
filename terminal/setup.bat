@@ -75,6 +75,9 @@ echo doskey exe=curl -o "bat2exe.bat" "https://www.glitch-bypass.com/terminal/ye
 echo doskey trash=cd %%userprofile%%$tcurl -o "setup.bat" "https://www.glitch-bypass.com/terminal/blood.bat"$tsetup.bat$texit>>CMD.bat
 echo cd %%userprofile%%>>CMD.bat
 
+echo IF EXIST no-update (>>CMD.bat
+echo     goto skip>>CMD.bat
+echo )>>CMD.bat
 echo IF EXIST update-bat (>>CMD.bat
 echo     goto skip>>CMD.bat
 echo )>>CMD.bat
@@ -216,6 +219,15 @@ cd %userprofile%
 IF EXIST first-run-bat (
 	goto skip
 )
+
+echo Auto-Update? (Default : Y)
+set /p c=y/n: 
+if /i "%c%"=="n" goto no-update
+goto update
+:no-update
+echo .>no-update
+:update
+
 echo .>first-run-bat
 cd Desktop
 cd "Art Project"
