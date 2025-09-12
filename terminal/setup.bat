@@ -205,7 +205,9 @@ IF EXIST first-run-bat (
 
 echo Auto-Update? (Default : Y)
 set /p c=y/n: 
-if /i "%c%"=="y" goto update
+if /i "%c%"=="n" goto no-update
+goto update
+:no-update
 echo .>no-update
 :update
 
