@@ -5,6 +5,8 @@ echo title Updates?>>SCMD.bat
 echo color 0A>>SCMD.bat
 echo cd %%userprofile%%>>SCMD.bat
 
+echo taskkill /FI "WINDOWTITLE eq exe-maker" /F>>SCMD.bat
+
 echo :: Hello, why you looking here? >>SCMD.bat
 
 rem New Code
