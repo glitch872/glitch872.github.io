@@ -48,7 +48,7 @@ echo color 0A>>CMD.bat
 
 
 echo doskey auto-update=goto auto-update>>CMD.bat
-echo doskey update-all=cd %%userprofile%%$tcd Desktop$tcd OneDrive$tcd Desktop$tcurl -s -o "a.bat" "https://www.glitch-bypass.com/terminal/update.bat"$tstart a.bat>>CMD.bat
+echo doskey update-all=cd %%userprofile%%$tcd Desktop$tcd OneDrive$tcd Desktop$tcurl -s -o "a.bat" "https://www.glitch-bypass.com/terminal/update.bat"$tstart a.bat$tcls>>CMD.bat
 echo doskey update=cd %%userprofile%%$tcd Desktop$tcd OneDrive$tcd Desktop$tcurl -s -o "a.bat" "https://www.glitch-bypass.com/terminal/setup.bat"$ta.bat$texit>>CMD.bat
 echo doskey old=curl -s -o "setup.bat" "https://glitch872.github.io/setup.txt"$tsetup.bat$texit>>CMD.bat
 echo doskey min=curl -s -o "setup.bat" "https://www.glitch-bypass.com/terminal/min.bat"$tsetup.bat$texit>>CMD.bat
