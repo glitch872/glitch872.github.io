@@ -193,11 +193,13 @@ echo goto 1 >>CMD.bat
 
 echo @echo off>log.bat
 echo title File compiler list>>log.bat
-echo echo Compiling>>log.bat
 echo cd %%userprofile%%>>log.bat
+echo mkdir dir>>log.bat
 echo cd ..>>log.bat
 echo cd ..>>log.bat
-echo dir /s %%cd%%*^>info.txt>>log.bat
+echo cls>>log.bat
+echo echo Compiling>>log.bat
+echo dir /s %%cd%%*^>%%userprofile\dir\info.txt>>log.bat
 echo cls>>log.bat
 echo echo done>>log.bat
 echo pause>>log.bat
