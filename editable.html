@@ -1,0 +1,104 @@
+<html>
+  <meta property="og:site_name" content="glitch872" />
+  <meta property="og:url" content="https://www.glitch-bypass.com" />
+  <meta property="og:title" content="glitch872's website" />
+  <meta property="og:description" content="The webpage owned by glitch872" />
+  <meta property="og:type" content="website" />
+  <meta
+    property="og:image"
+    content="https://www.glitch-bypass.com/protogen.gif"
+  />
+  <meta name="twitter:card" content="summary_large_image" />
+  <head>
+    <title>How to Breathe - wikiHow</title>
+    <link rel="shortcut icon" href="https://wikihow.com/favicon_round.ico" />
+    <style id="background-style">
+      body {
+        background-image: url("index.png");
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: fixed;
+        background-size: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <p>
+      Click
+      <a href="https://www.glitch-bypass.com">here</a>
+      to go back to the main page
+    </p>
+    <label for="title-input">Enter a new title:</label>
+    <input type="text" id="title-input" />
+    <button onclick="updateTitle()">Update Title</button>
+    <br /><br />
+    <label for="icon-input">Enter a new icon link:</label>
+    <input type="text" id="icon-input" />
+    <button onclick="updateIcon()">Update Icon</button>
+    <br /><br />
+    <label for="background-input">Enter a new background:</label>
+    <input type="text" id="background-input" />
+    <button onclick="updateBackground()">Update Background</button>
+    <br /><br />
+    <label for="image-input">Enter a new image:</label>
+    <input type="text" id="image-input" />
+    <button onclick="updateImage()">Update Image</button>
+
+    <script>
+      function updateTitle() {
+        var titleInput = document.getElementById("title-input");
+        var newTitle = titleInput.value;
+        document.title = newTitle;
+      }
+
+      function updateIcon() {
+        var iconInput = document.getElementById("icon-input");
+        var newIconLink = iconInput.value;
+        var iconLink = document.querySelector("link[rel~='icon']");
+        iconLink.href = newIconLink;
+      }
+      function updateBackground() {
+        var backgroundInput = document.getElementById("background-input");
+        var newBackground = backgroundInput.value;
+
+        console.log("Updating background to: " + newBackground);
+
+        var styleElement = document.createElement("style");
+        styleElement.innerHTML =
+          "body { background-image: url('" +
+          newBackground +
+          "'); background-repeat: no-repeat; background-position: center center; background-attachment: fixed; background-size: contain; }";
+
+        var oldStyleElement = document.getElementById("background-style");
+        if (oldStyleElement) {
+          oldStyleElement.remove();
+        }
+
+        styleElement.id = "background-style";
+        document.head.appendChild(styleElement);
+      }
+
+      function updateImage() {
+        var imageInput = document.getElementById("image-input");
+        var newImage = imageInput.value;
+        var currentImage = document.getElementById("main-image");
+        currentImage.src = newImage;
+      }
+    </script>
+
+    <p>
+      ChatGPT Icon: https://chat.openai.com/favicon-32x32.png
+      <br />
+      wikiHow Icon: https://wikihow.com/favicon_round.ico
+      <br />
+      Microsoft Teams Icon:
+      https://statics.teams.cdn.office.net/hashed/favicon/prod/favicon-f1722d9.ico
+    </p>
+
+    <img
+      id="main-image"
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/HD_transparent_picture.png/1200px-HD_transparent_picture.png"
+      alt="Placeholder Image"
+    />
+  </body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Glitch872's Website</title>
+
+  <meta property="og:site_name" content="glitch872" />
+  <meta property="og:url" content="https://www.glitch-bypass.com" />
+  <meta property="og:title" content="glitch872's website" />
+  <meta property="og:description" content="The webpage owned by glitch872" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://www.glitch-bypass.com/protogen.gif" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" type="image/png" href="pfp.png" />
+  <link rel="stylesheet" href="/style.css" />
+
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: transparent;
+      color: #f0f0f0;
+      min-height: 100vh;
+      padding: 2rem 0;
+      overflow-x: hidden;
+    }
+
+    .layout {
+      display: flex;
+      justify-content: flex-start;
+      max-width: 1400px;
+      margin: 0 auto;
+      gap: 3rem;
+      padding-left: 2rem;
+      padding-right: 1rem;
+    }
+
+    /* Main content flush left */
+    .main-content {
+      flex: 1 1 700px;
+      background-color: rgba(30, 30, 47, 0.6);
+      padding: 2rem 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      min-width: 350px;
+      height: fit-content;
+    }
+
+    /* Sidebar on right with contact info */
+    .sidebar {
+      flex: 0 0 370px;
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      min-width: 350px;
+    }
+
+    .contact-box {
+      background-color: rgba(30, 30, 47, 0.6);
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      width: 100%;
+      font-size: 0.95rem;
+      color: #ddd;
+      text-align: center;
+    }
+
+    .contact-box p {
+      margin: 0.5rem 0;
+    }
+
+    h1 {
+      font-size: 2.3rem;
+      color: #89dceb;
+      margin-bottom: 1.2rem;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    a {
+      color: #ff6b6b;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    a:hover {
+      color: #ff4b4b;
+      text-decoration: underline;
+    }
+
+    /* Discord embed under main content */
+    .discord-wrapper {
+      display: flex;
+      justify-content: center; /* Centers the discord embed */
+      width: 100%;
+    }
+
+    .discord-fixed {
+      width: 100%;
+      max-width: 320px;
+      height: 480px;
+      margin-top: 1.5rem; /* Adjust the space between the contact-box and embed */
+      border-radius: 8px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+      background-color: rgba(30, 30, 47, 0.85);
+      overflow: hidden;
+    }
+
+    .discord-fixed iframe {
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
+      border: none;
+    }
+
+    @media (max-width: 900px) {
+      .layout {
+        flex-direction: column;
+        padding-left: 1rem;
+      }
+      .sidebar, .main-content {
+        min-width: auto;
+        width: 100%;
+      }
+      .main-content {
+        flex: 0 1 auto;
+        height: auto;
+      }
+      .sidebar {
+        margin-top: -2vw;
+        align-items: flex-start;
+        height: auto;
+      }
+      .discord-fixed {
+        width: 90vw;
+        height: 400px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      [hide-mobile="true"] {
+        display: none;
+      }
+    }
+  </style>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1NBHYDH20L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1NBHYDH20L');
+  </script>
+</head>
+
+<body>
+  <div class="layout">
+    <div class="main-content">
+      <h1>Welcome to Glitch872's Website</h1>
+      <p>• <a href="about">About me</a></p>
+      <p>• <a href="index2">Open image hyperlink</a></p>
+      <p>• <a href="/Files">Access the files folder</a></p>
+      <p>• <a href="weblinks">View all websites I've made</a></p>
+      <p>• <a href="mc-servers">Minecraft servers that I play on</a></p>
+      <p>• <a href="scripts">Useful scripts I've found on github</a></p>
+      <p>• Download my custom <a href="terminal">CMD Terminal</a></p>
+
+      <p hide-mobile="true">Editable Page: <a href="editable">Click Here</a></p>
+      
+      <p>
+        Localhost link (only works if set up):<br />
+        <a href="http://localhost">http://localhost</a>
+      </p>
+    </div>
+
+    <div class="sidebar">
+      <div class="contact-box">
+        <iframe id="profileIframe" src="https://glitch-bypass.com/profile.html" width="100%" height="auto" style="border:none; border-radius:8px; overflow:hidden;" allowtransparency="true" sandbox="allow-scripts allow-same-origin" scrolling="no"></iframe>
+        <script src="https://glitch-bypass.com/profileSize.js"></script>
+
+
+        <p><strong>Discord Username:</strong> glitchkiller872</p>
+        <p><strong>Tag:</strong> glitchkiller872 yt#1256</p>
+        <p><strong>GitHub:</strong> <a href="https://github.com/glitch872">glitch872/github</a></p>
+        <p><strong>YouTube:</strong> <a href="youtube">@glitchkiller872</a></p>
+    </div>
+
+    <!-- New Wrapper for the contact box and discord embed -->
+    <div class="discord-wrapper">
+      <div class="discord-fixed">
+        <iframe src="https://discord.com/widget?id=1037930845849268334&theme=dark" allowtransparency="true" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

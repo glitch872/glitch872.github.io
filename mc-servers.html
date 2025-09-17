@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>glitch872's website</title>
+
+  <!-- Meta Tags -->
+  <meta property="og:site_name" content="glitch872" />
+  <meta property="og:url" content="https://www.glitch-bypass.com" />
+  <meta property="og:title" content="glitch872's website" />
+  <meta property="og:description" content="The webpage owned by glitch872" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://www.glitch-bypass.com/protogen.gif" />
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Favicon & Styles -->
+  <link rel="icon" type="image/png" href="pfp.png" />
+  <link rel="stylesheet" href="/style.css" />
+
+  <!-- Theming & Layout -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      padding: 2rem;
+      flex-direction: column;
+    }
+
+    .container {
+      background-color: rgba(30, 30, 47, 0.6);
+      padding: 2rem;
+      border-radius: 12px;
+      max-width: 800px;
+      width: 90%;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    iframe {
+      width: 728px;
+      height: 90px;
+      max-width: 100%;
+      border: none;
+      display: block;
+      margin: auto;
+    }
+    .server-card {
+      margin: 1.5rem auto 0;
+      padding: 1rem 1.25rem;
+      background-color: rgba(0, 0, 0, 0.45);
+      border-radius: 8px;
+      width: 100%;
+      max-width: 728px;
+      line-height: 1.45;
+    }
+    .server-card h3 {
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+    .server-card p {
+      font-size: 0.95rem;
+    }
+
+    .back-link {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 0.9rem;
+      color: #fff;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 0.4rem 0.8rem;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background-color 0.2s ease, color 0.2s ease;
+      z-index: 1000;
+    }
+    .back-link:hover {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+    @media (max-width: 900px) {
+      .back-link {
+        position: relative;  /* Change from absolute to relative */
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 1rem;  /* Adjust as needed */
+        margin-bottom: 2rem;
+        top: unset; /* Remove absolute positioning */
+        left: unset; /* Remove left positioning */
+      }
+    }
+  </style>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1NBHYDH20L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1NBHYDH20L');
+  </script>
+</head>
+
+<body>
+  <a class="back-link" href="https://www.glitch-bypass.com">← Back to Main Site</a>
+
+  <div class="container">
+    <!-- Live status will appear here -->
+    <div class="server-card" data-server="hardlife.mc.gg">
+      <h3>hardlife.mc.gg status</h3>
+      <p>Loading status…</p>
+    </div>
+
+    <div class="server-card" data-server="mc.hypixel.net">
+      <h3>mc.hypixel.net status</h3>
+      <p>Loading status…</p>
+    </div>
+  </div>
+
+  <!-- Live-status script -->
+  <script>
+  // Helper that fills a single card
+    function updateCard(card, data, server) {
+      if (!data || !data.online) {
+        card.innerHTML = `
+          <h3>${server} status</h3>
+          <p style="color:#ff6969;">Server is offline</p>`;
+        return;
+      }
+
+      const playerLine = data.players.online === 0
+        ? 'No one online'
+        : `${data.players.online} / ${data.players.max} players`;
+
+      card.innerHTML = `
+        <h3>${server} status</h3>
+        <p><strong>Status:</strong> <span style="color:#7CFC00;">Online</span></p>
+        <p><strong>Players:</strong> ${playerLine}</p>
+        <p><strong>Version:</strong> ${data.version ?? 'N/A'}</p>
+        <p><strong>MOTD:</strong> ${data.motd?.clean?.join('<br>') ?? '—'}</p>`;
+    }
+
+    // Grab every card on the page and fetch its server info
+    document.querySelectorAll('.server-card').forEach(card => {
+      const server = card.dataset.server;          // ← gets value from data-attribute
+      fetch(`https://api.mcsrvstat.us/2/${server}`)
+        .then(r => r.json())
+        .then(d => updateCard(card, d, server))
+        .catch(() => {
+          card.innerHTML = `
+            <h3>${server} status</h3>
+            <p style="color:#FFA500;">Could not retrieve server info.</p>`;
+        });
+    });
+  </script>
+
+</body>
+</html>

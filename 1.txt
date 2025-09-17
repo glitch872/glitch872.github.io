@@ -1,0 +1,32 @@
+const { ChannelType } = require('discord.js');
+
+module.exports = async function code(client, interaction) {
+  const msg = interaction.options.getString('text');
+  const yn = interaction.options.getBoolean('confirm') ?? false;
+  const del = interaction.options.getInteger('wnumber') || false;
+  const channel = interaction.options.getChannel('channel'); // New channel option
+
+  // If a channel is specified and it's a text channel
+  if (channel && channel.type === ChannelType.GuildText) {
+    const sentMsg = await channel.send({ content: msg, tts: yn });
+
+    await interaction.reply({ content: `✅ Message sent to ${channel}`, ephemeral: true });
+
+    if (del) {
+      setTimeout(() => {
+        sentMsg.delete().catch(err => console.error('Error deleting message:', err));
+      }, del * 1000);
+    }
+
+  } else {
+    // No valid channel provided, reply to the interaction directly
+    const reply = await interaction.reply({ content: msg, tts: yn, ephemeral: false });
+    const r = await interaction.fetchReply();
+
+    if (del) {
+      setTimeout(() => {
+        r.delete().catch(err => console.error('Error deleting message:', err));
+      }, del * 1000);
+    }
+  }
+};

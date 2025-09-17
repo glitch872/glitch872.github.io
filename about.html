@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Me | glitch872</title>
+
+  <meta property="og:site_name" content="glitch872" />
+  <meta property="og:url" content="https://www.glitch-bypass.com" />
+  <meta property="og:title" content="glitch872's website" />
+  <meta property="og:description" content="The webpage owned by glitch872" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://www.glitch-bypass.com/protogen.gif" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" type="image/png" href="icon.png" />
+  <link rel="stylesheet" href="https://glitch-bypass.com/style.css" />
+
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      padding: 2rem;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .layout {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 900px;
+      margin: 0 auto;
+      gap: 2rem;
+    }
+
+    .main-content {
+      width: 100%;
+      background-color: rgba(30, 30, 47, 0.6);
+      padding: 2rem 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      animation: fadeIn 0.8s ease forwards;
+      opacity: 0;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    h1 {
+      font-size: 2.3rem;
+      color: #89dceb;
+      margin-bottom: 1.2rem;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    a {
+      color: #ff6b6b;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    a:hover {
+      color: #ff4b4b;
+      text-decoration: underline;
+    }
+
+    .back-link {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 0.9rem;
+      color: #fff;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 0.4rem 0.8rem;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background-color 0.2s ease, color 0.2s ease;
+      z-index: 1000;
+    }
+
+    .back-link:hover {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .email-wrapper {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .copy-btn {
+      background: none;
+      border: 1px solid #888;
+      color: #ccc;
+      padding: 0.25rem 0.5rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .copy-btn:hover {
+      background-color: #333;
+    }
+
+    #profileIframe {
+      width: 300;
+    }
+
+    @media (max-width: 900px) {
+      body {
+        height: unset;
+        overflow: unset;
+        flex-direction: unset;
+        
+        min-height: 100vh;
+        padding: 2rem 1rem;
+        overflow-x: hidden;
+      }
+      
+      .main-content {
+        padding: 1.5rem;
+      }
+
+      .back-link {
+        position: relative;  /* Change from absolute to relative */
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 1rem;  /* Adjust as needed */
+        margin-bottom: 2rem;
+        top: unset; /* Remove absolute positioning */
+        left: unset; /* Remove left positioning */
+      }
+
+      body {
+        overflow-y: auto;
+      }
+
+      #profileIframe {
+        width: 100%;
+      }
+    }
+  </style>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1NBHYDH20L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1NBHYDH20L');
+  </script>
+</head>
+
+<body>
+  <div class="layout">
+    <a class="back-link" href="https://www.glitch-bypass.com">← Back to Main Site</a>
+
+    <div class="main-content">
+      <h1>About Me</h1>
+
+      <p>Hey, I’m <strong>glitch872</strong> — a developer, digital tinkerer, and someone who’s always curious about how things work (and how to make them work differently).</p>
+
+      <p>This site is my playground. I use it to test projects, collect useful scripts, host links to things I’ve made, and keep track of the tools I use and share. If it’s odd, useful, clever, or technically weird — I’m probably interested in it.</p>
+
+      <p>I spend a lot of time exploring tech, messing with web tools, playing around with servers (like Minecraft), and finding creative ways to bypass limitations (ethically, of course). I'm also active on <a href="https://github.com/glitch872">GitHub</a>, and my Discord is where I hang out most. I occasionally post random content on <a href="https://youtube.com/@glitchkiller872">@glitchkiller872</a> just for fun.</p>
+
+      <p>If you're here, you probably enjoy the same kind of chaotic curiosity.</p>
+
+      <p><strong>Contact me:</strong>
+        <span class="email-wrapper">
+          <span id="email"></span>
+          <button class="copy-btn" onclick="copyEmail()">Copy</button>
+        </span>
+      </p>
+      <iframe id="profileIframe" src="https://glitch-bypass.com/profile.html" height="auto" style="border:none; border-radius:8px; overflow:hidden;" allowtransparency="true" sandbox="allow-scripts allow-same-origin" scrolling="no"></iframe>
+      <script src="https://glitch-bypass.com/profileSize.js"></script>
+      <script>
+        const user = "contact";
+        const domain = "glitch-bypass.com";
+        const emailStr = `${user}@${domain}`;
+        document.getElementById("email").innerHTML = `<a href="mailto:${emailStr}">${emailStr}</a>`;
+
+        function copyEmail() {
+          navigator.clipboard.writeText(emailStr).then(() => {
+            const btn = document.querySelector('.copy-btn');
+            btn.innerText = "Copied!";
+            setTimeout(() => btn.innerText = "Copy", 1500);
+          });
+        }
+      </script>
+    </div>
+  </div>
+</body>
+</html>

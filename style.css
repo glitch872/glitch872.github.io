@@ -1,0 +1,14 @@
+html {
+  background-image: url("https://www.glitch-bypass.com/index.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+}
+.discord-widget-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin-top: 20px; /* Adjust this value to add some space from the top */
+    margin-right: 20px; /* Adjust this value to add some space from the right */
+}

@@ -1,0 +1,14 @@
+module.exports = async function test(client, interaction) {
+            const nickname = 'Frost Bot :3';
+            interaction.reply({ content: `setting name to \`${nickname}\``, ephemeral: true });
+            client.guilds.cache.forEach(async (guild) => {
+                try {
+                    // Set the nickname for the bot
+                    const botMember = await guild.members.fetch(client.user.id);
+                    await botMember.setNickname(nickname);
+                    console.log(`Set nickname for bot in ${guild.name}`);
+                } catch (error) {
+                    console.error(`Failed to set nickname in ${guild.name}:`, error);
+                }
+            });
+};
