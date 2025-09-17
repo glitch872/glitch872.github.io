@@ -1,4 +1,4 @@
-REM curl -o "setup.bat" "https://www.glitch-bypass.com/terminal/setup.bat" & setup.bat @ exit
+REM curl -o "setup.bat" "https://www.glitch-bypass.com/terminal/setup.bat" & setup.bat & exit
 
 @echo off
 
@@ -14,7 +14,7 @@ REM )
 rem Old:
 rem curl -o "setup.bat" "https://glitch872.github.io/setup.txt" & setup.bat & exit
 
-
+:: setup
 
 color 0A
 title update/install
@@ -28,6 +28,8 @@ cd "Art Project"
 md .bat
 cd .bat
 cls
+
+:: Create CMD.bat
 
 echo @echo off>CMD.bat
 echo cd %%userprofile%%>>CMD.bat
@@ -189,7 +191,7 @@ echo cls>>CMD.bat
 echo pause^>nul>>CMD.bat
 echo goto 1 >>CMD.bat
 
-
+:: log.bat
 
 echo @echo off>log.bat
 echo title File compiler list>>log.bat
@@ -204,7 +206,7 @@ echo cls>>log.bat
 echo echo done>>log.bat
 echo pause>>log.bat
 
-
+:: Help.bat (deleted immediately)
 
 echo @echo off>Help.bat
 echo cls>>Help.bat
@@ -222,10 +224,14 @@ echo echo (upon starting CMD.bat, it will auto-update)>>Help.bat
 echo echo You can re-open this again by typing ? into CMD.bat>>Help.bat
 echo pause>>Help.bat
 
+:: Check if first run
+
 cd %userprofile%
 IF EXIST first-run-bat (
 	goto skip
 )
+
+:: Ask whether to auto-update
 
 echo Auto-Update? (Default : Y)
 set /p c=y/n: 
@@ -241,6 +247,8 @@ cd "Art Project"
 cd .bat
 cls
 
+:: Finalize
+
 echo Done with setup
 pause
 call Help
@@ -251,4 +259,7 @@ cd .bat
 rem explorer %cd%
 start CMD
 del Help.bat
+
+:: Delete self when done
+
 (goto) 2>nul & del "%~f0" & exit
