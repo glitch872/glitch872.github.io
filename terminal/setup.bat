@@ -202,6 +202,7 @@ echo cd ..>>log.bat
 echo cls>>log.bat
 echo echo Compiling>>log.bat
 echo dir /s %%cd%%*^>%%userprofile\dir\info.txt>>log.bat
+echo explorer %%userprofile%%\dir\>>log.bat
 echo cls>>log.bat
 echo echo done>>log.bat
 echo pause>>log.bat
