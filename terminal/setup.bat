@@ -236,24 +236,6 @@ echo cls>>log.bat
 echo echo done>>log.bat
 echo pause>>log.bat
 
-:: Help.bat (deleted immediately)
-
-echo @echo off>Help.bat
-echo cls>>Help.bat
-echo echo In CMD.bat, there are a few custom commands>>Help.bat
-echo echo the command ~ Brings you to the userprofile directory>>Help.bat
-echo echo the command ~1 Brings you to the appdata directory>>Help.bat
-echo echo the command ~2 Brings you to the system32 directory>>Help.bat
-echo echo the command ~~ Opens File Explorer to the directory you are in>>Help.bat
-echo echo I made this so that there is ease of access to these main file directories>>Help.bat
-echo echo using "no-admin" you can run a file without needing admin (will only work with some files)>>Help.bat
-echo echo use "update" to update the file to the latest version>>Help.bat
-echo echo use "uninstall" to uninstall all related files>>Help.bat
-echo echo use "auto-update" to toggle auto-update>>Help.bat
-echo echo (upon starting CMD.bat, it will auto-update)>>Help.bat
-echo echo You can re-open this again by typing ? into CMD.bat>>Help.bat
-echo pause>>Help.bat
-
 :: Check if first run
 
 cd %userprofile%
@@ -265,7 +247,22 @@ IF EXIST first-run-bat (
 
 echo Done with setup
 pause
-call Help
+
+cls
+echo In CMD.bat, there are a few custom commands
+echo the command ~ Brings you to the userprofile directory
+echo the command ~1 Brings you to the appdata directory
+echo the command ~2 Brings you to the system32 directory
+echo the command ~~ Opens File Explorer to the directory you are in
+echo I made this so that there is ease of access to these main file directories
+echo using "no-admin" you can run a file without needing admin (will only work with some files)
+echo use "update" to update the file to the latest version
+echo use "uninstall" to uninstall all related files
+echo use "auto-update" to toggle auto-update
+echo (upon starting CMD.bat, it will auto-update)
+echo You can re-open this again by typing ? into CMD.bat
+pause
+
 :skip
 cd Desktop
 cd "Art Project"
