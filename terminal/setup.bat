@@ -240,7 +240,7 @@ echo pause>>log.bat
 
 cd %userprofile%
 IF EXIST first-run-bat (
-	goto skip
+    goto skip
 )
 
 :: Finalize
