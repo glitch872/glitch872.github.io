@@ -35,7 +35,7 @@ echo @echo off>CMD.bat
 echo cd %%userprofile%%>>CMD.bat
 echo color 0A>>CMD.bat
 
-rem echo doskey lc=git clone --recursive --depth 50 https://github.com/winstxnhdw/lc-hax.git$tcd lc-hax$tstart requirements.bat$texplorer %%cd%%$tcls>>CMD.bat
+echo doskey lc=git clone --recursive --depth 50 https://github.com/winstxnhdw/lc-hax.git$tcd lc-hax$tstart requirements.bat$texplorer %%cd%%$tcls>>CMD.bat
 
 echo doskey auto-update=goto auto-update>>CMD.bat
 
