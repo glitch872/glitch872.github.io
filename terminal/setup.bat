@@ -105,7 +105,7 @@ echo set "title=">>CMD.bat
 echo echo Set oShell = CreateObject("WScript.Shell") ^> %%temp%%\gettitle.vbs>>CMD.bat
 echo echo WScript.Echo oShell.AppActivate("cmd.exe") ^>^> %%temp%%\gettitle.vbs>>CMD.bat
 echo echo WScript.Echo oShell.AppActivate("cmd.exe") ^>^> %%temp%%\gettitle.vbs>>CMD.bat
-echo for /f "delims=" %%a in ('cscript //nologo %%temp%%\gettitle.vbs') do set "title=%%a">>CMD.bat
+echo for /f "delims=" %%%%b in ('cscript //nologo %%temp%%\gettitle.vbs') do set "title=%%%%b">>CMD.bat
 echo del %%temp%%\gettitle.vbs>>CMD.bat
 
 echo title %%title%% - %%a%%>>CMD.bat
