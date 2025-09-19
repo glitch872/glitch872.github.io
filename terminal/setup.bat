@@ -34,7 +34,6 @@ cls
 echo @echo off>CMD.bat
 echo cd %%userprofile%%>>CMD.bat
 echo color 0A>>CMD.bat
-echo setlocal enabledelayedexpansion >>CMD.bat
 
 echo doskey lc=git clone --recursive --depth 50 https://github.com/winstxnhdw/lc-hax.git$tcd lc-hax$tstart requirements.bat$texplorer %%cd%%$tcls>>CMD.bat
 
@@ -100,20 +99,7 @@ echo :1>>CMD.bat
 echo color 0a>>CMD.bat
 echo set a=>>CMD.bat
 echo set /p a= %%cd%%^^^>>>CMD.bat
-
-echo set "title=">>CMD.bat
-echo echo Set oShell = CreateObject("WScript.Shell") ^> %%temp%%\gettitle.vbs>>CMD.bat
-echo echo WScript.Echo oShell.AppActivate("cmd.exe") ^>^> %%temp%%\gettitle.vbs>>CMD.bat
-echo echo WScript.Echo oShell.AppActivate("cmd.exe") ^>^> %%temp%%\gettitle.vbs>>CMD.bat
-echo for /f "delims=" %%%%b in ('cscript //nologo %%temp%%\gettitle.vbs') do set "title=%%%%b">>CMD.bat
-echo del %%temp%%\gettitle.vbs>>CMD.bat
-
-echo title %%title%% - %%a%%>>CMD.bat
-
 echo %%a%%>>CMD.bat
-
-echo title %%title%%>>CMD.bat
-
 echo goto 1 >>CMD.bat
 
 echo :troll>>CMD.bat
