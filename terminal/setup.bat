@@ -35,7 +35,7 @@ echo @echo off>CMD.bat
 
 
 echo. >>CMD.bat
-echo :: Check if first run>>CMD>bat
+echo :: Check if first run>>CMD.bat
 echo. >>CMD.bat
 echo cd %%userprofile%%>>CMD.bat
 echo IF EXIST first-run-bat (>>CMD.bat
