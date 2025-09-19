@@ -39,7 +39,7 @@ echo :: Check if first run>>CMD>bat
 echo. >>CMD.bat
 echo cd %%userprofile%%>>CMD.bat
 echo IF EXIST first-run-bat (>>CMD.bat
-echo 	goto skip>>CMD.bat
+echo 	goto installed>>CMD.bat
 echo )>>CMD.bat
 echo.>>CMD.bat
 echo :: Ask whether to auto-update>>CMD.bat
@@ -58,6 +58,7 @@ echo cd "Art Project">>CMD.bat
 echo cd .bat>>CMD.bat
 echo cls>>CMD.bat
 echo. >>CMD.bat
+echo :installed >>CMD.bat
 
 
 echo cd %%userprofile%%>>CMD.bat
