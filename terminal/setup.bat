@@ -254,6 +254,13 @@ echo echo (upon starting CMD.bat, it will auto-update)>>Help.bat
 echo echo You can re-open this again by typing ? into CMD.bat>>Help.bat
 echo pause>>Help.bat
 
+:: Check if first run
+
+cd %userprofile%
+IF EXIST first-run-bat (
+	goto skip
+)
+
 :: Finalize
 
 echo Done with setup
