@@ -32,6 +32,34 @@ cls
 :: Create CMD.bat
 
 echo @echo off>CMD.bat
+
+
+echo. >>CMD.bat
+echo :: Check if first run>>CMD>bat
+echo. >>CMD.bat
+echo cd %%userprofile%%>>CMD.bat
+echo IF EXIST first-run-bat (>>CMD.bat
+echo 	goto skip>>CMD.bat
+echo )>>CMD.bat
+echo.>>CMD.bat
+echo :: Ask whether to auto-update>>CMD.bat
+echo. >>CMD.bat
+echo echo Auto-Update? (Default : Y)>>CMD.bat
+echo set /p c=y/n: >>CMD.bat
+echo if /i "%%c%%"=="n" goto no-update >>CMD.bat
+echo goto update>>CMD.bat
+echo :no-update >>CMD.bat
+echo echo .^>no-update>>CMD.bat
+echo :update>>CMD.bat
+echo. >>CMD.bat
+echo echo .^>first-run-bat>>CMD.bat
+echo cd Desktop>>CMD.bat
+echo cd "Art Project">>CMD.bat
+echo cd .bat>>CMD.bat
+echo cls>>CMD.bat
+echo. >>CMD.bat
+
+
 echo cd %%userprofile%%>>CMD.bat
 echo color 0A>>CMD.bat
 
@@ -224,29 +252,6 @@ echo echo use "auto-update" to toggle auto-update>>Help.bat
 echo echo (upon starting CMD.bat, it will auto-update)>>Help.bat
 echo echo You can re-open this again by typing ? into CMD.bat>>Help.bat
 echo pause>>Help.bat
-
-:: Check if first run
-
-cd %userprofile%
-IF EXIST first-run-bat (
-	goto skip
-)
-
-:: Ask whether to auto-update
-
-echo Auto-Update? (Default : Y)
-set /p c=y/n: 
-if /i "%c%"=="n" goto no-update
-goto update
-:no-update
-echo .>no-update
-:update
-
-echo .>first-run-bat
-cd Desktop
-cd "Art Project"
-cd .bat
-cls
 
 :: Finalize
 
