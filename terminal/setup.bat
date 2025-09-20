@@ -128,7 +128,9 @@ echo :1>>CMD.bat
 echo color 0a>>CMD.bat
 echo set a=>>CMD.bat
 echo set /p a= %%cd%%^^^>>>CMD.bat
+echo title Glitch Prompt - %%a%%>>CMD.bat
 echo %%a%%>>CMD.bat
+echo title Glitch Prompt>>CMD.bat
 echo goto 1 >>CMD.bat
 
 echo :troll>>CMD.bat
