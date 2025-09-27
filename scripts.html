@@ -35,6 +35,20 @@
       flex-direction: column;
       overflow: hidden;
     }
+    
+    body, h1, p, label, div, span, button {
+      user-select: none;
+      -webkit-user-select: none; /* Safari/Chrome */
+      -moz-user-select: none;    /* Firefox */
+      -ms-user-select: none;     /* IE/Edge */
+    }
+
+    input, textarea {
+      user-select: text;
+      -webkit-user-select: text;
+      -moz-user-select: text;
+      -ms-user-select: text;
+    }
 
     .container {
       background-color: rgba(30, 30, 47, 0.6);
