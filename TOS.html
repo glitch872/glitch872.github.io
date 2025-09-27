@@ -13,6 +13,19 @@
             max-width: 800px;
             padding: 10px;
         }
+    body, h1, p, label, div, span, button {
+      user-select: none;
+      -webkit-user-select: none; /* Safari/Chrome */
+      -moz-user-select: none;    /* Firefox */
+      -ms-user-select: none;     /* IE/Edge */
+    }
+
+    input, textarea {
+      user-select: text;
+      -webkit-user-select: text;
+      -moz-user-select: text;
+      -ms-user-select: text;
+    }
         h1, h2 {
             color: #333;
         }
