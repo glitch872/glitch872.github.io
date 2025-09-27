@@ -25,6 +25,20 @@
       padding: 0;
       box-sizing: border-box;
     }
+    
+    body, h1, p, label, div, span, button {
+      user-select: none;
+      -webkit-user-select: none; /* Safari/Chrome */
+      -moz-user-select: none;    /* Firefox */
+      -ms-user-select: none;     /* IE/Edge */
+    }
+
+    input, textarea {
+      user-select: text;
+      -webkit-user-select: text;
+      -moz-user-select: text;
+      -ms-user-select: text;
+    }
 
     body {
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
