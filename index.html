@@ -181,6 +181,18 @@
 </head>
 
 <body>
+  <script>
+  document.addEventListener("contextmenu", e => e.preventDefault());
+  document.addEventListener("keydown", e => {
+    if (
+      e.key === "F12" ||
+      (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key)) ||
+      (e.ctrlKey && e.key === "U")
+    ) {
+      e.preventDefault();
+    }
+  });
+</script>
   <div class="layout">
     <div class="main-content">
       <h1>Welcome to Glitch872's Website</h1>
@@ -237,6 +249,7 @@
   </div>
 </body>
 </html>
+
 
 
 
