@@ -45,7 +45,7 @@ echo.>>CMD.bat
 echo :: Ask whether to auto-update>>CMD.bat
 echo. >>CMD.bat
 echo echo Auto-Update? (Default : Y)>>CMD.bat
-echo set /p c=y/n: >>CMD.bat
+echo set /p c=Y/n: >>CMD.bat
 echo if /i "%%c%%"=="n" goto no-update >>CMD.bat
 echo goto update>>CMD.bat
 echo :no-update >>CMD.bat
