@@ -1,3 +1,7 @@
+
+:: This file is not yet being used, it is still being worked on
+
+
 @echo off
 setlocal EnableExtensions EnableDelayedExpansion
 
