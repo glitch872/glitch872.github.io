@@ -1,4 +1,4 @@
-REM just a note, this is not my code, I found this on the interenet, I do not remember where
+;REM just a note, this is not my code, I found this on the interenet, I do not remember where
 
 ;@echo off
 ;rem Title Converting batch scripts to file.exe with iexpress.
