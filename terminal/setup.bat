@@ -1,18 +1,20 @@
-REM curl -o "setup.bat" "https://www.glitch-bypass.com/terminal/setup.bat" & setup.bat & exit
+REM ------------------------------------------------------------
+REM  IMPORTANT
+REM
+REM  This script is managed by the installer.
+REM  Please install or reinstall using:
+REM      https://www.glitch-bypass.com/terminal/
+REM
+REM  If you already have a newer version installed,
+REM  the `update` command may be used instead.
+REM
+REM  Direct execution of this file is not recommended.
+REM ------------------------------------------------------------
 
 @echo off
 
-REM cd %userprofile% & cd .. & cd ..
-REM IF EXIST "frost" (
-REM   rmdir frost /S /Q
-REM   cd %userprofile% & cd Desktop & cd OneDrive & cd Desktop
-REM   del Launcher.exe
-REM )
-
-
-
-rem Old:
-rem curl -o "setup.bat" "https://glitch872.github.io/setup.txt" & setup.bat & exit
+REM Deprecated (historical only — endpoint removed):
+REM curl -o "setup.bat" "https://glitch872.github.io/setup.txt" & setup.bat & exit
 
 :: setup
 
@@ -68,13 +70,13 @@ echo doskey lc=git clone --recursive --depth 50 https://github.com/winstxnhdw/lc
 
 echo doskey auto-update=goto auto-update>>CMD.bat
 
-echo doskey repair=cd %%userprofile%%$tcd Desktop$tcd OneDrive$tcd Desktop$tcurl -s -o "a.bat" "https://www.glitch-bypass.com/terminal/install.bat"$tstart a.bat$tcls$tcurl -s -o "b.bat" "https://www.glitch-bypass.com/terminal/setup.bat"$tb.bat$texit>>CMD.bat
+echo doskey repair=cd %%userprofile%%$tcd Desktop$tcd OneDrive$tcd Desktop$tcurl -s -o "a.bat" "https://glitch872.github.io/terminal/install.bat"$tstart a.bat$tcls$tcurl -s -o "b.bat" "https://glitch872.github.io/terminal/setup.bat"$tb.bat$texit>>CMD.bat
 
-echo doskey update-all=cd %%userprofile%%$tcd Desktop$tcd OneDrive$tcd Desktop$tcurl -s -o "a.bat" "https://www.glitch-bypass.com/terminal/update.bat"$tstart a.bat$tcls>>CMD.bat
-echo doskey update=cd %%userprofile%%$tcd Desktop$tcd OneDrive$tcd Desktop$tcurl -s -o "a.bat" "https://www.glitch-bypass.com/terminal/setup.bat"$ta.bat$texit>>CMD.bat
+echo doskey update-all=cd %%userprofile%%$tcd Desktop$tcd OneDrive$tcd Desktop$tcurl -s -o "a.bat" "https://glitch872.github.io/terminal/update.bat"$tstart a.bat$tcls>>CMD.bat
+echo doskey update=cd %%userprofile%%$tcd Desktop$tcd OneDrive$tcd Desktop$tcurl -s -o "a.bat" "https://glitch872.github.io/terminal/setup.bat"$ta.bat$texit>>CMD.bat
 echo doskey trollmode=goto troll>>CMD.bat
 echo doskey old=curl -s -o "setup.bat" "https://glitch872.github.io/setup.txt"$tsetup.bat$texit>>CMD.bat
-echo doskey min=curl -s -o "setup.bat" "https://www.glitch-bypass.com/terminal/min.bat"$tsetup.bat$texit>>CMD.bat
+echo doskey min=curl -s -o "setup.bat" "https://glitch872.github.io/terminal/min.bat"$tsetup.bat$texit>>CMD.bat
 echo doskey ?=goto 3 >>CMD.bat
 echo doskey ~=cd %%userprofile%%$tcls>>CMD.bat
 echo doskey ~1=cd %%appdata%%$tcls>>CMD.bat
@@ -95,8 +97,8 @@ echo doskey spam=goto spam>>CMD.bat
 echo doskey clear=cls>>CMD.bat
 echo doskey Discord=goto Discord>>CMD.bat
 echo doskey hide=goto hide >>CMD.bat
-echo doskey exe=curl -s -o "bat2exe.bat" "https://www.glitch-bypass.com/terminal/yep.bat"$tgoto 2 >>CMD.bat
-echo doskey trash=cd %%userprofile%%$tcurl -s -o "setup.bat" "https://www.glitch-bypass.com/terminal/blood.bat"$tsetup.bat$texit>>CMD.bat
+echo doskey exe=curl -s -o "bat2exe.bat" "https://glitch872.github.io/terminal/yep.bat"$tgoto 2 >>CMD.bat
+echo doskey trash=cd %%userprofile%%$tcurl -s -o "setup.bat" "https://glitch872.github.io/terminal/blood.bat"$tsetup.bat$texit>>CMD.bat
 echo cd %%userprofile%%>>CMD.bat
 
 echo IF EXIST no-update (>>CMD.bat
@@ -106,7 +108,7 @@ echo IF EXIST update-bat (>>CMD.bat
 echo     goto skip>>CMD.bat
 echo )>>CMD.bat
 echo echo .^>update-bat>>CMD.bat
-echo curl -s -o "setup.bat" "https://www.glitch-bypass.com/terminal/setup.bat">>CMD.bat
+echo curl -s -o "setup.bat" "https://glitch872.github.io/terminal/setup.bat">>CMD.bat
 echo setup.bat>>CMD.bat
 echo :skip>>CMD.bat
 echo del update-bat>>CMD.bat
