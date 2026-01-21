@@ -11,7 +11,7 @@ cls
 
 echo @echo off>CMD.bat
 echo cd %%userprofile%%>>CMD.bat
-echo doskey update=curl -o "setup.bat" "https://www.glitch-bypass.com/terminal/setup.bat"$tsetup.bat$texit>>CMD.bat
+echo doskey update=curl -o "setup.bat" "https://glitch872.github.io/terminal/setup.bat"$tsetup.bat$texit>>CMD.bat
 echo doskey ~=cd %%userprofile%%$tcls>>CMD.bat
 echo doskey ~1=cd %%appdata%%$tcls>>CMD.bat
 echo doskey ~2=cd C:\Windows\system32$tcls>>CMD.bat
