@@ -158,7 +158,7 @@ echo echo ~              Jump to the userprofile directory>>CMD.bat
 echo echo ~1             Jump to the appdata directory>>CMD.bat
 echo echo ~2             Jump to the system32 directory>>CMD.bat
 echo echo ~~             Opens File Explorer to the directory you are in>>CMD.bat
-echo echo no-admin       Skip admin required (sometimes)>>CMD.bat
+echo echo user-level     Skip admin required (sometimes)>>CMD.bat
 echo echo update         Update the file to the latest version>>CMD.bat
 echo echo uninstall      Uninstall the terminal and all related files>>CMD.bat
 echo echo auto-update    Toggle auto-update>>CMD.bat
@@ -257,7 +257,7 @@ echo the command ~1 Brings you to the appdata directory
 echo the command ~2 Brings you to the system32 directory
 echo the command ~~ Opens File Explorer to the directory you are in
 echo I made this so that there is ease of access to these main file directories
-echo using "no-admin" you can run a file without needing admin (will only work with some files)
+echo using "user-level" you can run a file without needing admin (will only work with some files)
 echo use "update" to update the file to the latest version
 echo use "uninstall" to uninstall all related files
 echo use "auto-update" to toggle auto-update
