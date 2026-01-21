@@ -24,7 +24,7 @@ echo IF EXIST CMD.bat (>>SCMD.bat
 echo   cd %%userprofile%%^>nul>>SCMD.bat
 echo   goto skip>>SCMD.bat
 echo )>>SCMD.bat
-echo curl -s -o a.bat https://glitch872.github.io/terminal/setup.bat^>nul>>SCMD.bat
+echo curl -L -s -o a.bat https://glitch872.github.io/terminal/setup.bat^>nul>>SCMD.bat
 echo a.bat>>SCMD.bat
 echo exit>>SCMD.bat
 echo :skip>>SCMD.bat
@@ -41,14 +41,14 @@ echo echo Checking for updates>>SCMD.bat
 echo FOR /F "delims=" %%%%F IN ('dir /S /b CMD.bat') DO SET ExePath=%%%%F>>SCMD.bat
 echo cmd /min /C "set __COMPAT_LAYER=RUNASINVOKER && start "" "%%ExePath%%"">>SCMD.bat
 
-curl -s -o exe.bat https://glitch872.github.io/terminal/yep.bat
+curl -L -s -o exe.bat https://glitch872.github.io/terminal/yep.bat
 call exe.bat SCMD.bat
 del exe.bat
 del SCMD.bat
 
 rem Work in progress code
-rem curl -o ico.bat https://glitch872.github.io/terminal/applyico.bat
-rem curl -o img.ico https://glitch872.github.io/terminal/glitch-terminal.ico
+rem curl -L -o ico.bat https://glitch872.github.io/terminal/applyico.bat
+rem curl -L -o img.ico https://glitch872.github.io/terminal/glitch-terminal.ico
 rem start ico.bat "SCMD.exe" "img.ico"
 rem del ico.bat
 rem End of WIP code
