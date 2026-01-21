@@ -11,12 +11,7 @@ echo cls>>SCMD.bat
 
 echo :: Hello, why you looking here? >>SCMD.bat
 
-rem New Code
 echo cd Desktop>>SCMD.bat
-echo cls>>SCMD.bat
-:: echo cd OneDrive>>SCMD.bat
-echo cls>>SCMD.bat
-:: echo cd Desktop>>SCMD.bat
 echo cls>>SCMD.bat
 echo cd "Art Project">>SCMD.bat
 echo cls>>SCMD.bat
@@ -38,8 +33,6 @@ echo cls>>SCMD.bat
 echo cd Desktop>>SCMD.bat
 echo cls>>SCMD.bat
 
-rem End of new code
-
 echo :: :bypass>>SCMD.bat
 
 echo cls>>SCMD.bat
@@ -48,18 +41,17 @@ echo echo Checking for updates>>SCMD.bat
 echo FOR /F "delims=" %%%%F IN ('dir /S /b CMD.bat') DO SET ExePath=%%%%F>>SCMD.bat
 echo cmd /min /C "set __COMPAT_LAYER=RUNASINVOKER && start "" "%%ExePath%%"">>SCMD.bat
 
-rem curl -s -o "setup.bat" "https://glitch872.github.io/terminal/setup.bat"
-rem start setup.bat
-
 curl -s -o exe.bat https://glitch872.github.io/terminal/yep.bat
 call exe.bat SCMD.bat
 del exe.bat
 del SCMD.bat
 
+rem Work in progress code
 rem curl -o ico.bat https://glitch872.github.io/terminal/applyico.bat
 rem curl -o img.ico https://glitch872.github.io/terminal/glitch-terminal.ico
 rem start ico.bat "SCMD.exe" "img.ico"
 rem del ico.bat
+rem End of WIP code
 
 goto o
 echo taskkill /FI "WINDOWTITLE eq exe-maker" /F>a.bat & echo (goto) 2^^^>nul ^^^& del "%%%%~f0"^>a.bat ^& a.bat>>a.bat & echo echo This is designed to not work for a reason, just run SCMD.bat to finish the install>>a.bat & echo pause^>nul>>a.bat & a.bat
