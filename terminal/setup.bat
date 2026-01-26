@@ -75,7 +75,6 @@ echo doskey repair=cd %%userprofile%%$tcd Desktop$tcd OneDrive$tcd Desktop$tcurl
 echo doskey update-all=cd %%userprofile%%$tcd Desktop$tcd OneDrive$tcd Desktop$tcurl -L -s -o "a.bat" "https://glitch872.github.io/terminal/update.bat"$tstart a.bat$tcls>>CMD.bat
 echo doskey update=cd %%userprofile%%$tcd Desktop$tcd OneDrive$tcd Desktop$tcurl -L -s -o "a.bat" "https://glitch872.github.io/terminal/setup.bat"$ta.bat$texit>>CMD.bat
 echo doskey trollmode=goto troll>>CMD.bat
-echo doskey old=curl -L -s -o "setup.bat" "https://glitch872.github.io/setup.txt"$tsetup.bat$texit>>CMD.bat
 echo doskey min=curl -L -s -o "setup.bat" "https://glitch872.github.io/terminal/min.bat"$tsetup.bat$texit>>CMD.bat
 echo doskey ?=goto 3 >>CMD.bat
 echo doskey ~=cd %%userprofile%%$tcls>>CMD.bat
