@@ -14,6 +14,7 @@
 ;set "bat_dir=%~dp1"
 ;Set "sed=%temp%\2exe.sed"
 ;rem echo              Please  wait a while ...  Creating "%~n1.exe" ...
+;echo oh, hi there, please close this window
 ;copy /y "%~f0" "%sed%" >nul
 ;(
     ;(echo()
