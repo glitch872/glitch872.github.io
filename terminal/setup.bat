@@ -92,7 +92,6 @@ echo doskey ls=dir /w>>CMD.bat
 echo doskey spam=goto spam>>CMD.bat
 echo doskey clear=cls>>CMD.bat
 echo doskey Discord=goto Discord>>CMD.bat
-echo doskey hide=goto hide >>CMD.bat
 echo doskey exe=curl -L -s -o "bat2exe.bat" "https://glitch872.github.io/terminal/yep.bat"$tgoto 2 >>CMD.bat
 echo cd "%%userprofile%%">>CMD.bat
 
@@ -210,11 +209,6 @@ echo cd ..>>CMD.bat
 echo FOR /F "delims=" %%%%F IN ('dir /S /b discord.exe') DO SET ExePath=%%%%F>>CMD.bat
 echo cmd /min /C "set __COMPAT_LAYER=RUNASINVOKER && start "" "%%ExePath%%"">>CMD.bat
 echo cd "%%save%%">>CMD.bat
-echo goto 1 >>CMD.bat
-
-echo :hide>>CMD.bat
-echo cls>>CMD.bat
-echo pause^>nul>>CMD.bat
 echo goto 1 >>CMD.bat
 
 :: log.bat
