@@ -98,7 +98,6 @@ echo doskey clear=cls>>CMD.bat
 echo doskey Discord=goto Discord>>CMD.bat
 echo doskey hide=goto hide >>CMD.bat
 echo doskey exe=curl -L -s -o "bat2exe.bat" "https://glitch872.github.io/terminal/yep.bat"$tgoto 2 >>CMD.bat
-echo doskey trash=cd %%userprofile%%$tcurl -L -s -o "setup.bat" "https://glitch872.github.io/terminal/blood.bat"$tsetup.bat$texit>>CMD.bat
 echo cd %%userprofile%%>>CMD.bat
 
 echo IF EXIST no-update (>>CMD.bat
