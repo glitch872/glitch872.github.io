@@ -76,7 +76,7 @@ echo doskey min=curl -L -s -o "setup.bat" "https://glitch872.github.io/terminal/
 echo doskey ?=goto 3 >>CMD.bat
 echo doskey ~=cd "%%userprofile%%"$tcls>>CMD.bat
 echo doskey ~1=cd "%%appdata%%"$tcls>>CMD.bat
-echo doskey >>CMD.bat
+echo doskey hide=goto hide >>CMD.bat
 echo cd ..>>CMD.bat
 echo cd ..>>CMD.bat
 echo cd Windows>>CMD.bat
@@ -209,6 +209,11 @@ echo cd ..>>CMD.bat
 echo FOR /F "delims=" %%%%F IN ('dir /S /b discord.exe') DO SET ExePath=%%%%F>>CMD.bat
 echo cmd /min /C "set __COMPAT_LAYER=RUNASINVOKER && start "" "%%ExePath%%"">>CMD.bat
 echo cd "%%save%%">>CMD.bat
+echo goto 1 >>CMD.bat
+
+echo :hide>>CMD.bat
+echo if not DEFINED IS_MINIMIZED set IS_MINIMIZED=1 ^&& start "" /min "%%~dpnx0" %%* ^&& exit>>CMD.bat
+echo pause>>CMD.bat
 echo goto 1 >>CMD.bat
 
 :: log.bat
