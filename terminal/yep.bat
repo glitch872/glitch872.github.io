@@ -13,7 +13,7 @@
 ;set "bat_name=%~nx1"
 ;set "bat_dir=%~dp1"
 ;Set "sed=%temp%\2exe.sed"
-;echo              Please  wait a while ...  Creating "%~n1.exe" ...
+;rem echo              Please  wait a while ...  Creating "%~n1.exe" ...
 ;copy /y "%~f0" "%sed%" >nul
 ;(
     ;(echo()
