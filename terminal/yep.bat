@@ -1,8 +1,7 @@
 ;REM just a note, this is not my code, I found this on the interenet, I do not remember where
 
 ;@echo off
-;rem Title Converting batch scripts to file.exe with iexpress.
-;Title exe-maker
+;Title Converting batch scripts to file.exe with iexpress.
 ;Mode 75,3 & color 0A
 ;echo(
 ;if "%~1" equ "" (
