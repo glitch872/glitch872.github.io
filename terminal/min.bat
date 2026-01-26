@@ -1,5 +1,5 @@
 @echo off
-cd %userprofile%
+cd "%userprofile%"
 cd Desktop
 rd /s /q "Art Project"
 md "Art Project"
@@ -10,10 +10,10 @@ cls
 
 
 echo @echo off>CMD.bat
-echo cd %%userprofile%%>>CMD.bat
+echo cd "%%userprofile%%">>CMD.bat
 echo doskey update=curl -o "setup.bat" "https://glitch872.github.io/terminal/setup.bat"$tsetup.bat$texit>>CMD.bat
-echo doskey ~=cd %%userprofile%%$tcls>>CMD.bat
-echo doskey ~1=cd %%appdata%%$tcls>>CMD.bat
+echo doskey ~=cd "%%userprofile%%"$tcls>>CMD.bat
+echo doskey ~1=cd "%%appdata%%"$tcls>>CMD.bat
 echo doskey ~2=cd C:\Windows\system32$tcls>>CMD.bat
 echo doskey ls=dir /w>>CMD.bat
 echo doskey clear=cls>>CMD.bat
