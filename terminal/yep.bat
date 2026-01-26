@@ -17,7 +17,7 @@
 ;copy /y "%~f0" "%sed%" >nul
 ;(
     ;(echo()
-    ;(echo(AppLaunched=cmd /c "%bat_name%")
+    ;(echo(AppLaunched=cmd /c start "" /b "%bat_name%" ^& exit)
     ;(echo(TargetName=%target.exe%)
     ;(echo(FILE0="%bat_name%")
     ;(echo([SourceFiles])
