@@ -212,7 +212,7 @@ echo cd "%%save%%">>CMD.bat
 echo goto 1 >>CMD.bat
 
 echo :hide>>CMD.bat
-echo if not DEFINED IS_MINIMIZED set IS_MINIMIZED=1 ^&& start "" /min "%%~dpnx0" %%* ^&& exit>>CMD.bat
+echo if not DEFINED IS_MINIMIZED set IS_MINIMIZED=1 ^&^& start "" /min "%%~dpnx0" %%* ^&^& exit>>CMD.bat
 echo pause>>CMD.bat
 echo goto 1 >>CMD.bat
 
