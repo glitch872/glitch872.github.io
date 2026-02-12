@@ -156,6 +156,7 @@ echo echo ~1             Jump to the appdata directory>>CMD.bat
 echo echo ~2             Jump to the system32 directory>>CMD.bat
 echo echo ~~             Opens File Explorer to the directory you are in>>CMD.bat
 echo echo user-level     Skip admin required (sometimes)>>CMD.bat
+echo echo host           Open a UDP port tunnel through a 3rd party system (MC localhost world \"server\")
 echo echo update         Update the file to the latest version>>CMD.bat
 echo echo uninstall      Uninstall the terminal and all related files>>CMD.bat
 echo echo auto-update    Toggle auto-update>>CMD.bat
