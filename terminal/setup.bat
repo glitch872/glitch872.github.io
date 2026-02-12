@@ -219,6 +219,7 @@ echo start "" /min "%%~dpnx0" %%* ^&^& exit>>CMD.bat
 echo goto 1 >>CMD.bat
 
 echo :host-ask>>CMD.bat
+echo title Disclaimer!>>CMD.bat
 echo cls>>CMD.bat
 echo echo [Disclaimer] : This may at any point stop working, I do not own the service>>CMD.bat
 echo echo Y/n - Default = Y>>CMD.bat
