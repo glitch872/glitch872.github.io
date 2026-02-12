@@ -215,6 +215,39 @@ echo :hide>>CMD.bat
 echo start "" /min "%%~dpnx0" %%* ^&^& exit>>CMD.bat
 echo goto 1 >>CMD.bat
 
+echo :host-ask>>CMD.bat
+echo echo "[Disclaimer] : This may at any point stop working, I do not own the service">>CMD.bat
+echo echo "Y/n - Default = Y">>CMD.bat
+echo set /p a=: >>CMD.bat
+echo if /I "%%a%%"=="n" goto 1 >>CMD.bat
+
+echo set a=>>CMD.bat
+echo :host>>CMD.bat
+echo title DO NOT CLOSE LOL>>CMD.bat
+echo if not defined a (>>CMD.bat
+echo   echo This defaults to 25565 if you don't put a port>>CMD.bat
+echo )>>CMD.bat
+echo if defined a (>>CMD.bat
+echo   echo If the port has not changed, and you have not restarted the world, just click enter>>CMD.bat
+echo   echo The current port is %%a%%>>CMD.bat
+echo )>>CMD.bat
+echo set /p a= Port: >>CMD.bat
+echo cls>>CMD.bat
+echo if not defined a (>>CMD.bat
+echo   set a=25565>>CMD.bat
+echo   echo Port set to default of 25565.>>CMD.bat
+echo   echo Please use Ctrl + C if that is not the correct port.>>CMD.bat
+echo )>>CMD.bat
+echo echo Don't put a password lol, just click enter>>CMD.bat
+echo ssh -p 443 -R0:127.0.0.1:%%a%% tcp@free.pinggy.io>>CMD.bat
+echo cls>>CMD.bat
+echo echo Connection closed, press any key to re-input Port #>>CMD.bat
+echo echo or type "C" to close (case insensitive)>>CMD.bat
+echo set /p close=>>CMD.bat
+echo if /I "%%close%%"=="c" goto 1 >>CMD.bat
+echo cls>>CMD.bat
+echo goto host>>CMD.bat
+
 :: log.bat
 
 echo @echo off>log.bat
