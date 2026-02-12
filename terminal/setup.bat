@@ -220,8 +220,8 @@ echo goto 1 >>CMD.bat
 
 echo :host-ask>>CMD.bat
 echo cls>>CMD.bat
-echo echo "[Disclaimer] : This may at any point stop working, I do not own the service">>CMD.bat
-echo echo "Y/n - Default = Y">>CMD.bat
+echo echo [Disclaimer] : This may at any point stop working, I do not own the service>>CMD.bat
+echo echo Y/n - Default = Y>>CMD.bat
 echo set /p a=: >>CMD.bat
 echo if /I "%%a%%"=="n" goto 1 >>CMD.bat
 echo cls>>CMD.bat
