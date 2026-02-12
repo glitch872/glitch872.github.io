@@ -250,6 +250,7 @@ echo ssh -p 443 -R0:127.0.0.1:%%a%% tcp@free.pinggy.io>>CMD.bat
 echo cls>>CMD.bat
 echo echo Connection closed, press any key to re-input Port #>>CMD.bat
 echo echo or type "C" to close (case insensitive)>>CMD.bat
+echo set close=>>CMD.bat
 echo set /p close=>>CMD.bat
 echo cls>>CMD.bat
 echo title Glitch Prompt>>CMD.bat
