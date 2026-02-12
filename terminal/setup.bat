@@ -69,6 +69,8 @@ echo doskey auto-update=goto auto-update>>CMD.bat
 
 echo doskey repair=cd "%%userprofile%%"$tcd Desktop$tcd OneDrive$tcd Desktop$tcurl -L -s -o "a.bat" "https://glitch872.github.io/terminal/install.bat"$tstart a.bat$tcls$tcurl -L -s -o "b.bat" "https://glitch872.github.io/terminal/setup.bat"$tb.bat$texit>>CMD.bat
 
+echo doskey host=goto host-ask>>CMD.bat
+
 echo doskey update-all=cd "%%userprofile%%"$tcd Desktop$tcd OneDrive$tcd Desktop$tcurl -L -s -o "a.bat" "https://glitch872.github.io/terminal/update.bat"$tstart a.bat$tcls>>CMD.bat
 echo doskey update=cd "%%userprofile%%"$tcd Desktop$tcd OneDrive$tcd Desktop$tcurl -L -s -o "a.bat" "https://glitch872.github.io/terminal/setup.bat"$ta.bat$texit>>CMD.bat
 echo doskey trollmode=goto troll>>CMD.bat
