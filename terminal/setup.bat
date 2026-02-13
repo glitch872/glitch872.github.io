@@ -251,7 +251,7 @@ echo cls>>CMD.bat
 echo echo Connection closed, press any key to re-input Port #>>CMD.bat
 echo echo or type "C" to close (case insensitive)>>CMD.bat
 echo set close=>>CMD.bat
-echo set /p close=>>CMD.bat
+echo set /p close=: >>CMD.bat
 echo cls>>CMD.bat
 echo title Glitch Prompt>>CMD.bat
 echo if /I "%%close%%"=="c" goto 1 >>CMD.bat
