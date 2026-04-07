@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -13,12 +14,15 @@
   <meta property="og:image" content="https://www.glitch-bypass.com/protogen.gif" />
   <meta name="twitter:card" content="summary_large_image" />
 
+  <link rel="canonical" href="https://www.glitch-bypass.com/">
   <link rel="icon" type="image/png" href="pfp.png" />
   <link rel="stylesheet" href="/style.css" />
 
   <style>
     * {
-      margin: 0; padding: 0; box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
     body {
@@ -29,15 +33,25 @@
       padding: 2rem 0;
       overflow-x: hidden;
     }
-    
-    body, h1, p, label, div, span, button {
+
+    body,
+    h1,
+    p,
+    label,
+    div,
+    span,
+    button {
       user-select: none;
-      -webkit-user-select: none; /* Safari/Chrome */
-      -moz-user-select: none;    /* Firefox */
-      -ms-user-select: none;     /* IE/Edge */
+      -webkit-user-select: none;
+      /* Safari/Chrome */
+      -moz-user-select: none;
+      /* Firefox */
+      -ms-user-select: none;
+      /* IE/Edge */
     }
 
-    input, textarea {
+    input,
+    textarea {
       user-select: text;
       -webkit-user-select: text;
       -moz-user-select: text;
@@ -117,7 +131,8 @@
     /* Discord embed under main content */
     .discord-wrapper {
       display: flex;
-      justify-content: center; /* Centers the discord embed */
+      justify-content: center;
+      /* Centers the discord embed */
       width: 100%;
     }
 
@@ -125,7 +140,8 @@
       width: 100%;
       max-width: 320px;
       height: 480px;
-      margin-top: 1.5rem; /* Adjust the space between the contact-box and embed */
+      margin-top: 1.5rem;
+      /* Adjust the space between the contact-box and embed */
       border-radius: 8px;
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
       background-color: rgba(30, 30, 47, 0.85);
@@ -144,19 +160,24 @@
         flex-direction: column;
         padding-left: 1rem;
       }
-      .sidebar, .main-content {
+
+      .sidebar,
+      .main-content {
         min-width: auto;
         width: 100%;
       }
+
       .main-content {
         flex: 0 1 auto;
         height: auto;
       }
+
       .sidebar {
         margin-top: -2vw;
         align-items: flex-start;
         height: auto;
       }
+
       .discord-fixed {
         width: 90vw;
         height: 400px;
@@ -165,6 +186,7 @@
         margin-top: 1.5rem;
         margin-bottom: 1rem;
       }
+
       [hide-mobile="true"] {
         display: none;
       }
@@ -174,7 +196,7 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-1NBHYDH20L"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', 'G-1NBHYDH20L');
   </script>
@@ -182,17 +204,8 @@
 
 <body>
   <script>
-  document.addEventListener("contextmenu", e => e.preventDefault());
-  document.addEventListener("keydown", e => {
-    if (
-      e.key === "F12" ||
-      (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key)) ||
-      (e.ctrlKey && e.key === "U")
-    ) {
-      e.preventDefault();
-    }
-  });
-</script>
+    document.addEventListener("contextmenu", e => e.preventDefault());
+  </script>
   <div class="layout">
     <div class="main-content">
       <h1>Welcome to Glitch872's Website</h1>
@@ -206,7 +219,7 @@
       <p>• Embed <a href="https://discord-embed.glitch-bypass.com">discord profile on website</a> (self hosted)</p>
 
       <p hide-mobile="true">Editable Page: <a href="editable">Click Here</a></p>
-      
+
       <p>
         Localhost link (only works if set up):<br />
         <a href="http://localhost">http://localhost</a>
@@ -215,52 +228,26 @@
 
     <div class="sidebar">
       <div class="contact-box">
-        <iframe
-          id="profileIframe"
+        <iframe id="profileIframe"
           src="https://discord-embed.glitch-bypass.com/profile?id=759520546286731264&background=https%3A%2F%2Fdiscord-embed.glitch-bypass.com%2Fimages%2Fbanner.webp&pronouns=He/Him"
-          height="auto"
-          style="
-            border:none;
-            border-radius:8px;
-            overflow:hidden;
-          "
-          allowtransparency="true"
-          sandbox="
-            allow-scripts
-            allow-same-origin
-          "
-          scrolling="no"
-        >
-        </iframe>
+          height="auto" style="border:none; border-radius:8px; overflow:hidden;" allowtransparency="true"
+          sandbox="allow-scripts allow-same-origin" scrolling="no"></iframe>
         <script src="https://discord-embed.glitch-bypass.com/profileFix.js"></script>
 
         <p><strong>Discord Username:</strong> glitchkiller872</p>
         <p><strong>Tag:</strong> glitchkiller872 yt#1256</p>
         <p><strong>GitHub:</strong> <a href="https://github.com/glitch872">glitch872</a></p>
         <p><strong>YouTube:</strong> <a href="youtube">@glitchkiller872</a></p>
-    </div>
+      </div>
 
-    <!-- New Wrapper for the contact box and discord embed -->
-    <div class="discord-wrapper">
-      <div class="discord-fixed">
-        <iframe src="https://discord.com/widget?id=1037930845849268334&theme=dark" allowtransparency="true" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+      <!-- New Wrapper for the contact box and discord embed -->
+      <div class="discord-wrapper">
+        <div class="discord-fixed">
+          <iframe src="https://discord.com/widget?id=1037930845849268334&theme=dark" allowtransparency="true"
+            sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+        </div>
       </div>
     </div>
-  </div>
 </body>
+
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

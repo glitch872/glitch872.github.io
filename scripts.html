@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -35,15 +36,25 @@
       flex-direction: column;
       overflow: hidden;
     }
-    
-    body, h1, p, label, div, span, button {
+
+    body,
+    h1,
+    p,
+    label,
+    div,
+    span,
+    button {
       user-select: none;
-      -webkit-user-select: none; /* Safari/Chrome */
-      -moz-user-select: none;    /* Firefox */
-      -ms-user-select: none;     /* IE/Edge */
+      -webkit-user-select: none;
+      /* Safari/Chrome */
+      -moz-user-select: none;
+      /* Firefox */
+      -ms-user-select: none;
+      /* IE/Edge */
     }
 
-    input, textarea {
+    input,
+    textarea {
       user-select: text;
       -webkit-user-select: text;
       -moz-user-select: text;
@@ -59,7 +70,8 @@
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     }
 
-    h1, h4 {
+    h1,
+    h4 {
       color: #89dceb;
       margin-bottom: 1rem;
       font-weight: 600;
@@ -96,18 +108,24 @@
       transition: background-color 0.2s ease, color 0.2s ease;
       z-index: 1000;
     }
+
     .back-link:hover {
       background-color: rgba(0, 0, 0, 0.7);
     }
+
     @media (max-width: 900px) {
       .back-link {
-        position: relative;  /* Change from absolute to relative */
+        position: relative;
+        /* Change from absolute to relative */
         margin-left: auto;
         margin-right: auto;
-        margin-top: 1rem;  /* Adjust as needed */
+        margin-top: 1rem;
+        /* Adjust as needed */
         margin-bottom: 2rem;
-        top: unset; /* Remove absolute positioning */
-        left: unset; /* Remove left positioning */
+        top: unset;
+        /* Remove absolute positioning */
+        left: unset;
+        /* Remove left positioning */
       }
     }
   </style>
@@ -116,7 +134,7 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-1NBHYDH20L"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', 'G-1NBHYDH20L');
   </script>
@@ -134,4 +152,5 @@
     </p>
   </main>
 </body>
+
 </html>
