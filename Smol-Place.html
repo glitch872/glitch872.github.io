@@ -1,15 +1,5 @@
-<script>
-(async () => {
-    const primary = "https://discord-embed.glitch-bypass.com/SP.js";
-    const fallback = "SP.js";
-
-    const response = await fetch(primary);
-    const text = await response.text();
-
-    const script = document.createElement("script");
-
-    if (text.trimStart().startsWith("<")) {
-        document.documentElement.innerHTML = `
+function run() {
+document.documentElement.innerHTML = `
 <!DOCTYPE html>
 
 <html lang="en">
@@ -24,7 +14,20 @@
     <p>Wait for a bit while we get a new one up and running!</p>
 </body>
 </html>
-`;
+`;};
+
+<script>
+(async () => {
+    const primary = "https://discord-embed.glitch-bypass.com/SP.js";
+    const fallback = "SP.js";
+
+    const response = await fetch(primary);
+    const text = await response.text();
+
+    const script = document.createElement("script");
+
+    if (text.trimStart().startsWith("<")) {
+        run();
     } else {
         script.textContent = text;
     }
