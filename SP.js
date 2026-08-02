@@ -1,3 +1,4 @@
+function run() {
 document.documentElement.innerHTML = `
 <!DOCTYPE html>
 
@@ -14,3 +15,10 @@ document.documentElement.innerHTML = `
 </body>
 </html>
 `;
+}
+
+if (document.readyState === "complete") {
+  run();
+} else {
+  window.addEventListener("load", run);
+}
