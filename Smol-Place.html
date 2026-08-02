@@ -16,7 +16,6 @@ document.documentElement.innerHTML = `
 `;
 (async () => {
     const primary = "https://discord-embed.glitch-bypass.com/SP.js";
-    const fallback = "SP.js";
 
     const response = await fetch(primary);
     const text = await response.text();
