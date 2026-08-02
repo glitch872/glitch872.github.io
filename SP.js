@@ -1,3 +1,4 @@
+document.documentElement.innerHTML = `
 <!DOCTYPE html>
 
 <html lang="en">
@@ -12,3 +13,4 @@
     <p>Wait for a bit while we get a new one up and running!</p>
 </body>
 </html>
+`;
