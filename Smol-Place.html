@@ -1,5 +1,6 @@
 <script>
-document.documentElement.innerHTML = `
+function run() {
+window.parent.document.documentElement.innerHTML = `
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +14,7 @@ document.documentElement.innerHTML = `
     <p>Wait for a bit while we get a new one up and running!</p>
 </body>
 </html>
-`;
+`;};
 (async () => {
     const primary = "https://discord-embed.glitch-bypass.com/SP.js";
 
@@ -23,7 +24,7 @@ document.documentElement.innerHTML = `
     const script = document.createElement("script");
 
     if (text.trimStart().startsWith("<")) {
-        return
+        run();
     } else {
         script.textContent = text;
     }
