@@ -118,7 +118,7 @@ echo echo %%v%%>>CMD.bat
 echo del ver.txt>>CMD.bat
 echo echo (c) Microsoft Corporation. All rights reserved>>CMD.bat
 echo echo.>>CMD.bat
-echo echo {GlitchPrompt by Glitch872}>>CMD.bat
+echo echo {GlitchPrompt by Cotton}>>CMD.bat
 echo echo.>>CMD.bat
 echo title Glitch Prompt>>CMD.bat
 
