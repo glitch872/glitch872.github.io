@@ -74,6 +74,22 @@
     a.download-btn:hover {
       background-color: #ff4b4b;
     }
+    a.readme-btn {
+      display: inline-block;
+      text-decoration: none;
+      color: #fff;
+      background-color: rgba(137, 220, 235, 0.15);
+      border: 2px solid #89dceb;
+      padding: calc(0.75rem - 2px) calc(1.5rem - 2px);
+      border-radius: 6px;
+      font-size: 1.1rem;
+      transition: background-color 0.3s ease;
+      margin-bottom: 1rem;
+      margin-left: 0.5rem;
+    }
+    a.readme-btn:hover {
+      background-color: rgba(137, 220, 235, 0.3);
+    }
     .note {
       font-size: 0.95rem;
       color: #ccc;
@@ -116,6 +132,7 @@
     Click below to install it with the latest version.</p>
 
     <a class="download-btn" href="/terminal/install.bat" download>Download Installer</a>
+    <a class="readme-btn" href="/terminal/readme.html">README</a>
 
     <p class="note">Please ensure to only run the installer when it is on your desktop</p>
   </div>

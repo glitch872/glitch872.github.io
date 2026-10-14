@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>README | Custom Terminal</title>
+
+  <meta property="og:site_name" content="glitch872" />
+  <meta property="og:url" content="https://www.glitch-bypass.com/terminal/readme.html" />
+  <meta property="og:title" content="Custom Terminal README" />
+  <meta property="og:description" content="Commands, install steps and troubleshooting for the custom terminal." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary">
+
+  <link rel="icon" type="image/png" href="pfp.png" />
+  <link rel="stylesheet" href="https://www.glitch-bypass.com/style.css" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 5rem 1.5rem 3rem;
+      position: relative;
+    }
+    .container {
+      width: 100%;
+      max-width: 860px;
+      background-color: rgba(30, 30, 47, 0.6);
+      padding: 2rem 2.25rem;
+      border-radius: 12px;
+      text-align: left;
+      line-height: 1.6;
+    }
+
+    /* Rendered README.md */
+    #readme h1 { font-size: 2.4rem; color: #89dceb; margin-bottom: 1rem; }
+    #readme h2 {
+      font-size: 1.6rem;
+      color: #89dceb;
+      margin: 2rem 0 0.75rem;
+      padding-bottom: 0.3rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    #readme h3 { font-size: 1.2rem; color: #cdd6f4; margin: 1.5rem 0 0.5rem; }
+    #readme p { margin-bottom: 1rem; }
+    #readme ul, #readme ol { margin: 0 0 1rem 1.5rem; }
+    #readme li { margin-bottom: 0.3rem; }
+    #readme a { color: #ff6b6b; }
+    #readme a:hover { color: #ff4b4b; }
+    #readme code {
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 0.9em;
+      background-color: rgba(0, 0, 0, 0.4);
+      padding: 0.15em 0.4em;
+      border-radius: 4px;
+    }
+    #readme pre {
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin-bottom: 1rem;
+    }
+    #readme pre code { background: none; padding: 0; color: #a6e3a1; }
+    #readme blockquote {
+      border-left: 4px solid #ff6b6b;
+      background-color: rgba(0, 0, 0, 0.25);
+      padding: 0.6rem 1rem;
+      margin-bottom: 1rem;
+      border-radius: 0 6px 6px 0;
+    }
+    #readme blockquote p { margin-bottom: 0; }
+    #readme table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 1.25rem;
+      display: block;
+      overflow-x: auto;
+    }
+    #readme th, #readme td {
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 0.5rem 0.75rem;
+      text-align: left;
+      vertical-align: top;
+    }
+    #readme th { background-color: rgba(0, 0, 0, 0.35); color: #89dceb; }
+    #readme tr:nth-child(even) td { background-color: rgba(255, 255, 255, 0.03); }
+
+    .status { color: #ccc; }
+    .status a { color: #ff6b6b; }
+
+    .back-link {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 0.9rem;
+      color: #fff;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 0.4rem 0.8rem;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+    .back-link:hover {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+  </style>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1NBHYDH20L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1NBHYDH20L');
+  </script>
+</head>
+
+<body>
+  <a class="back-link" href="./">&larr; Back to Terminal</a>
+
+  <div class="container">
+    <article id="readme">
+      <p class="status">Loading README&hellip;</p>
+    </article>
+    <noscript>
+      <p class="status">JavaScript is needed to display the README here. You can read it directly: <a href="README.md">README.md</a></p>
+    </noscript>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
+  <script>
+    (function () {
+      var target = document.getElementById('readme');
+
+      function fail() {
+        target.innerHTML =
+          '<p class="status">Could not load the README. ' +
+          'You can open it directly here: <a href="README.md">README.md</a></p>';
+      }
+
+      fetch('README.md', { cache: 'no-cache' })
+        .then(function (res) {
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          return res.text();
+        })
+        .then(function (md) {
+          var html = marked.parse(md);
+          target.innerHTML = DOMPurify.sanitize(html);
+          // Open external links in a new tab
+          target.querySelectorAll('a[href^="http"]').forEach(function (a) {
+            a.target = '_blank';
+            a.rel = 'noopener noreferrer';
+          });
+        })
+        .catch(fail);
+    })();
+  </script>
+</body>
+</html>
