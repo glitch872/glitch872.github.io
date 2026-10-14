@@ -24,7 +24,7 @@ C:\Users\you
 
 ## Installation
 
-1. Download install.bat from .
+1. Download install.bat from https://glitch-bypass.com/terminal/
 
 1. Place it on your Desktop. The installer checks its own location and will refuse to run anywhere else.
 
